@@ -49,5 +49,9 @@
         "branch-alias": {
             "dev-master": "2.3-dev"
         }
+    },
+    "require-dev": {
+        "behat/behat": "~3.0",
+        "behat/symfony2-extension": "~2.0"
     }
 }
