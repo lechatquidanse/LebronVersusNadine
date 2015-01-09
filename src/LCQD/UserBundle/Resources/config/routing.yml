@@ -1,0 +1,3 @@
+lcqd_user_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: LCQDUserBundle:Default:index }

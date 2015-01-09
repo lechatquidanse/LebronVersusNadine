@@ -23,7 +23,8 @@
         "friendsofsymfony/rest-bundle": "~1.4",
         "nelmio/api-doc-bundle": "~2.7",
         "willdurand/hateoas-bundle": "0.4.*",
-        "willdurand/rest-extra-bundle": "~1.0"
+        "willdurand/rest-extra-bundle": "~1.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "scripts": {
         "post-install-cmd": [
