@@ -1,0 +1,3 @@
+lcqd_app_homepage:
+    path:     /
+    defaults: { _controller: LCQDAppBundle:Default:index }

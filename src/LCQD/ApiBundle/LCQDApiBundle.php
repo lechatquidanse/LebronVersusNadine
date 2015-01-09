@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace LCQD\ApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class LCQDApiBundle extends Bundle
 {
 }

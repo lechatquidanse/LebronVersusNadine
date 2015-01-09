@@ -1,0 +1,7 @@
+parameters:
+#    lcqd_app.example.class: LCQD\AppBundle\Example
+
+services:
+#    lcqd_app.example:
+#        class: %lcqd_app.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

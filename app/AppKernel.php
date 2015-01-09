@@ -16,17 +16,18 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
 
             // REST
-            //new JMS\SerializerBundle\JMSSerializerBundle(),
-            //new FOS\RestBundle\FOSRestBundle(),
-            //new Bazinga\Bundle\RestExtraBundle\BazingaRestExtraBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new Bazinga\Bundle\RestExtraBundle\BazingaRestExtraBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
             // APP
             new FOS\UserBundle\FOSUserBundle(),
             new LCQD\UserBundle\LCQDUserBundle(),
+            new LCQD\ApiBundle\LCQDApiBundle(),
+            new LCQD\AppBundle\LCQDAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

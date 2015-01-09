@@ -6,8 +6,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class LCQDUserBundle extends Bundle
 {
-    /*public function getParent()
+    public function getParent()
     {
         return 'FOSUserBundle';
-    }*/
+    }
 }
