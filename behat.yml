@@ -1,3 +1,18 @@
 default:
     extensions:
-        Behat\Symfony2Extension: ~
+        Behat\Symfony2Extension:
+            kernel:
+                env: test
+                debug: true
+        Behat\MinkExtension:
+            base_url: http://lebronvsnadine/app_test.php/
+            sessions:
+                my_session:
+                    symfony2: ~
+            selenium2:
+                capabilities:
+                    version: ''
+    suites:
+        user_features:
+            type: symfony_bundle
+            bundle: LCQDUserBundle
