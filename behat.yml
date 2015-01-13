@@ -5,11 +5,12 @@ default:
                 env: test
                 debug: true
         Behat\MinkExtension:
-            base_url: http://lebronvsnadine/app_test.php/
+            base_url: http://lebronvsnadine.dev/app_test.php/
             sessions:
-                my_session:
+                default:
                     symfony2: ~
             selenium2:
+                browser: google-chrome
                 capabilities:
                     version: ''
     suites:
