@@ -23,10 +23,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     use KernelDictionary;
 
-    /**
-     * @Given I am on :pagename page
-     */
-    public function iAmOnPage($pagename)
+    protected function getPathFromPagename($pagename)
     {
         $router = $this->getContainer()->get('router');
 
@@ -41,9 +38,18 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
                 break;
         }
 
-        $url = $router->generate('fos_user_registration_register');
+        $url = $router->generate($routename);
 
-        $this->visit($url);
+        return $url;
+    }
+
+    /**
+     * @Given I am on :pagename page
+     */
+    public function iAmOnPage($pagename)
+    {
+        $url = $this->getPathFromPagename($pagename);
+        $this->visitPath($url);
     }
 
     /**
@@ -62,15 +68,16 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iSubmitForm($formname)
     {
-        $this->clickLink('submit');
+        $this->forward('registration.submit');
     }
 
     /**
-     * @Then I should be redirected to :arg1 page
+     * @Then I should be on :pagename page
      */
-    public function iShouldBeRedirectedToPage($arg1)
+    public function iShouldBeRedirectedToPage($pagename)
     {
-        throw new PendingException();
+        $url = $this->getPathFromPagename($pagename);
+        $this->assertPageAddress($url);
     }
 
     /**
