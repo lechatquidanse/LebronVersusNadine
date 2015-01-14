@@ -1,19 +1,46 @@
+#default:
+#    extensions:
+#        Behat\Symfony2Extension:
+#            kernel:
+#                env: test
+#                debug: true
+#        Behat\MinkExtension:
+#            base_url: http://lebronvsnadine.dev/app_test.php/
+#            sessions:
+#                default:
+#                    symfony2: ~
+#            selenium2:
+#                browser: google-chrome
+#                capabilities:
+ #                   version: ''
+ ##   suites:
+  #      user_features:
+  #          type: symfony_bundle
+  #          bundle: LCQDUserBundle
+
+
 default:
+
+    suites:
+        user_sigin:
+            type: symfony_bundle
+            bundle: LCQDUserBundle
+            #paths:    [ %paths.base%/features/landingpage ]
+            contexts:
+                - LCQD\UserBundle\Features\Context\FeatureContext
+                - LCQD\UserBundle\Features\Context\MinkRedirectContext
+                - Behat\MinkExtension\Context\MinkContext
+
     extensions:
-        Behat\Symfony2Extension:
-            kernel:
-                env: test
-                debug: true
         Behat\MinkExtension:
             base_url: http://lebronvsnadine.dev/app_test.php/
             sessions:
                 default:
                     symfony2: ~
-            selenium2:
-                browser: google-chrome
-                capabilities:
-                    version: ''
-    suites:
-        user_features:
-            type: symfony_bundle
-            bundle: LCQDUserBundle
+                javascript:
+                    selenium2: ~
+            browser_name: google-chrome
+        Behat\Symfony2Extension:
+            kernel:
+                env: test
+                debug: true

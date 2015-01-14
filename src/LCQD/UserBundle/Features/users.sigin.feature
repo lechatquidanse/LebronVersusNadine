@@ -8,5 +8,5 @@ Feature: User sign in application
     Given I am on "registration" page
     When I fill in "creating an account" form with "successful" informations
     And I submit "creating an account" form
-    Then I should on "my account" page
+    Then I should be redirected to "registration confirmed" page
     And I should see "successful registration" information

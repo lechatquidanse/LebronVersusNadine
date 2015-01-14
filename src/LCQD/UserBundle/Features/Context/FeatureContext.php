@@ -3,11 +3,9 @@
 namespace LCQD\UserBundle\Features\Context;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Definition\Call\Given;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Tester\Exception\PendingException;
-use Behat\MinkExtension\Context\MinkContext;
-
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelDictionary;
@@ -16,12 +14,24 @@ use Symfony\Component\HttpKernel\KernelInterface;
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
+class FeatureContext implements Context, SnippetAcceptingContext
 {
     /**
      * 
      */
     use KernelDictionary;
+
+    private $minkContext;
+    private $minkRedirectContext;
+
+    /** @BeforeScenario */
+    public function gatherContexts(BeforeScenarioScope $scope)
+    {
+        $environment = $scope->getEnvironment();
+    
+        $this->minkRedirectContext = $environment->getContext('LCQD\UserBundle\Features\Context\MinkRedirectContext');
+        $this->minkContext = $environment->getContext('Behat\MinkExtension\Context\MinkContext');
+    }
 
     protected function getPathFromPagename($pagename)
     {
@@ -32,7 +42,10 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
             case 'registration':
                 $routename = 'fos_user_registration_register';
                 break;
-            
+            case 'registration confirmed':
+                $routename = 'fos_user_registration_confirmed';
+                break;
+
             default:
                 # code...
                 break;
@@ -49,7 +62,7 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     public function iAmOnPage($pagename)
     {
         $url = $this->getPathFromPagename($pagename);
-        $this->visitPath($url);
+        $this->minkContext->visitPath($url);
     }
 
     /**
@@ -57,27 +70,19 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iFillInFormWithInformations($formname, $arg2)
     {
-        $this->fillField('fos_user_registration_form_email', 'zum@zum.zz');
-        $this->fillField('fos_user_registration_form_username', 'zum');
-        $this->fillField('fos_user_registration_form_plainPassword_first', 'zum');
-        $this->fillField('fos_user_registration_form_plainPassword_second', 'zum');
+        $this->minkContext->fillField('fos_user_registration_form_email', 'zum@zum.zz');
+        $this->minkContext->fillField('fos_user_registration_form_username', 'zum');
+        $this->minkContext->fillField('fos_user_registration_form_plainPassword_first', 'zum');
+        $this->minkContext->fillField('fos_user_registration_form_plainPassword_second', 'zum');
     }
 
     /**
-     * @When I submit :formname form
-     */
-    public function iSubmitForm($formname)
-    {
-        $this->forward('registration.submit');
-    }
-
-    /**
-     * @Then I should be on :pagename page
+     * @Then I should be redirected to :pagename page
      */
     public function iShouldBeRedirectedToPage($pagename)
     {
         $url = $this->getPathFromPagename($pagename);
-        $this->assertPageAddress($url);
+        $this->minkRedirectContext->iAmRedirected($url);
     }
 
     /**
@@ -85,7 +90,15 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iShouldSeeInformation($arg1)
     {
-        throw new PendingException();
+        $this->minkContext->assertPageContainsText('registration.confirmed');
+    }
+
+    /**
+     * @When I submit :formname form
+     */
+    public function iSubmitForm($formname)
+    {
+        $this->minkContext->forward('registration.submit');
     }
 
     /**
