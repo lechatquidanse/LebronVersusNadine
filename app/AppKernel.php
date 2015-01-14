@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new LCQD\UserBundle\LCQDUserBundle(),
             new LCQD\ApiBundle\LCQDApiBundle(),
             new LCQD\AppBundle\LCQDAppBundle(),
+            new LCQD\AppCommonBundle\LCQDAppCommonBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
