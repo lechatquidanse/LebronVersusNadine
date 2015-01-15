@@ -1,5 +1,5 @@
 LCQD\PlaystationBundle\Entity\Avatar:
-    avatar{1..10}:
+    avatar_{1..10}:
         firstname: <firstName()>
         lastname: 80%? <lastName()>
         aboutMe: 50%? <text()>

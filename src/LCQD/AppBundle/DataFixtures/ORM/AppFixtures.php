@@ -1,11 +1,11 @@
 <?php
 
-namespace LCQD\PlaystationBundle\DataFixtures\ORM;
+namespace LCQD\AppBundle\DataFixtures\ORM;
 
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Nelmio\Alice\Fixtures;
 
-class PlaystationFixtures extends DataFixtureLoader
+class AppFixtures extends DataFixtureLoader
 {
     /**
      * {@inheritDoc}
@@ -14,6 +14,15 @@ class PlaystationFixtures extends DataFixtureLoader
     {
         return  array(
             __DIR__ . '/../avatars.yml',
+            __DIR__ . '/../users.yml',
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1;
     }
 }
