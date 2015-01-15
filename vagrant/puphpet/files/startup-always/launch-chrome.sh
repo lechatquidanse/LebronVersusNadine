@@ -8,6 +8,5 @@ Xvfb :10 -screen 0 1366x768x24 -ac &
 echo "Starting Google Chrome ..."
 google-chrome --remote-debugging-port=9222 &
 
-#echo "Starting Selenium ..."
-#cd /usr/local/bin
-#java -jar ./selenium-server-standalone-2.35.0.jar &
+echo "Starting Selenium ..."
+selenium &

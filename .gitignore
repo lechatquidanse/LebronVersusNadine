@@ -10,6 +10,7 @@
 /bin/
 /composer.phar
 
+.DS_Store
 /vagrant/.vagrant
 /vagrant/puphpet/files/dot/ssh/id_rsa
 /vagrant/puphpet/files/dot/ssh/id_rsa.ppk
