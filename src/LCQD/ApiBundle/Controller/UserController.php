@@ -14,7 +14,7 @@ use FOS\RestBundle\Request\ParamFetcherInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-use  Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * 
@@ -32,7 +32,7 @@ class UserController extends FOSRestController
      * )
      *
      * @Annotations\View(
-     *  templateVar="item"
+     *  templateVar="user"
      * )
      *
      * @param Request               $request      the request object
