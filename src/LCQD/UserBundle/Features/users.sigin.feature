@@ -3,7 +3,6 @@ Feature: User sign in application
   As a user
   I need to be able to register and login
 
-  @javascript
   Scenario: Successful "login" with "application account"
     Given I am on "login" page
     When I fill in login form with "good" informations

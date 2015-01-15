@@ -10,23 +10,29 @@ use LCQD\AppCommonBundle\Features\Context\DefaultContext;
  */
 class BrowserContext extends DefaultContext
 {
+    public $minkContext;
     public $routes = array();
+
+    /** @BeforeScenario */
+    public function gatherContexts(BeforeScenarioScope $scope)
+    {
+        $environment = $scope->getEnvironment();
+        $this->minkContext = $environment->getContext('Behat\MinkExtension\Context\MinkContext');
+    }
 
     /**
      * @Given I am on :pagename page
      */
     public function iAmOnPage($pagename)
     {
-        $url = $this->getRouteFromPagename($pagename);
-        $this->getSession()->visit($url);
+        $this->minkContext->visit($this->getRouteFromPagename($pagename));
     }
     /**
      * @Then I should be on :pagename page
      */
     public function iShouldBeOnPage($pagename)
     {
-        $url = $this->getRouteFromPagename($pagename);
-        $this->assertSession()->assertPageAddress($url);
+        $this->minkContext->assertPageAddress($this->getRouteFromPagename($pagename));
     }
 
     public function __construct()
@@ -51,7 +57,6 @@ class BrowserContext extends DefaultContext
     private function getRouteFromPagename($pagename, array $parameters = array(), $absolute = false)
     {
         if (false === array_key_exists($pagename, $this->routes)) {
-
             throw new \Exception(sprintf('No route found for page %s', $pagename));
         }
 
@@ -75,7 +80,6 @@ class BrowserContext extends DefaultContext
             );
 
         foreach ($userRoutes as $pagename => $routename) {
-            
             $this->addRoute($pagename, $routename);
         }
     }

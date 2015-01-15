@@ -29,6 +29,9 @@ class AppKernel extends Kernel
             new LCQD\ApiBundle\LCQDApiBundle(),
             new LCQD\AppBundle\LCQDAppBundle(),
             new LCQD\AppCommonBundle\LCQDAppCommonBundle(),
+            new LCQD\PlayStationBundle\LCQDPlaystationBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Hautelook\AliceBundle\HautelookAliceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

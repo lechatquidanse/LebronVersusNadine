@@ -1,0 +1,8 @@
+parameters:
+    lcqd_playstation.avatar.entity.class: LCQD\PlaystationBundle\Entity\Avatar
+    lcqd_playstation.avatar.manager.class: LCQD\PlaystationBundle\Manager\AvatarManager
+
+services:
+    lcqd_playstation.avatar.manager:
+        class: %lcqd_playstation.avatar.manager.class%
+        arguments: [@doctrine.orm.entity_manager, %lcqd_playstation.avatar.entity.class%, @form.factory]
