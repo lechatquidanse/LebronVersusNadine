@@ -5,7 +5,7 @@ namespace LCQD\AppCommonBundle\Manager;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\FormFactoryInterface;
 
-abstract class DefaultManager implements ManagerInterface
+abstract class BaseManager implements ManagerInterface
 {
     private $om;
     private $entityClass;

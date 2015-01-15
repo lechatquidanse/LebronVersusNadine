@@ -14,6 +14,8 @@ use FOS\RestBundle\Request\ParamFetcherInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
+use  Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * 
  */
@@ -35,10 +37,14 @@ class UserController extends FOSRestController
      *
      * @param Request               $request      the request object
      *
-     * @return array
+     * @throws NotFoundHttpException when user not exist
+     * 
+     * @return UserInterface
      */
     public function getMeAction(Request $request)
     {
-        return 'la';
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        return $user;
     }
 }

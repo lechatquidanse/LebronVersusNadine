@@ -2,8 +2,8 @@
 
 namespace LCQD\PlaystationBundle\Manager;
 
-use LCQD\AppCommonBundle\Manager\DefaultManager;
+use LCQD\AppCommonBundle\Manager\BaseManager;
 
-class AvatarManager extends DefaultManager
+class AvatarManager extends BaseManager
 {
 }

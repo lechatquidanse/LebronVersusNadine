@@ -23,7 +23,7 @@ class User extends BaseUser
 
     /**
     * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"})
-    * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=false)
+    * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
     */
     private $avatar;
 

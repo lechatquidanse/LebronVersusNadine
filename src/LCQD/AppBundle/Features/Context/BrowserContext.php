@@ -3,12 +3,12 @@
 namespace LCQD\AppBundle\Features\Context;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use LCQD\AppCommonBundle\Features\Context\DefaultContext;
+use LCQD\AppCommonBundle\Features\Context\BaseContext;
 
 /**
  * Defines application features from the specific context.
  */
-class BrowserContext extends DefaultContext
+class BrowserContext extends BaseContext
 {
     public $minkContext;
     public $routes = array();

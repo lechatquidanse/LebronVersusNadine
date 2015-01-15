@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  *
  */
-abstract class DefaultContext extends RawMinkContext implements Context, KernelAwareContext, SnippetAcceptingContext
+abstract class BaseContext extends RawMinkContext implements Context, KernelAwareContext, SnippetAcceptingContext
 {
     /**
      * Faker.
