@@ -3,7 +3,7 @@
 namespace LCQD\UserBundle\Entity;
 
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
-use FOS\UserBundle\Model\User as BaseUser;
+use LCQD\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

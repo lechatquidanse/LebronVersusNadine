@@ -3,7 +3,7 @@ LCQD\UserBundle\Entity\User:
         username: <firstName()>
         email (unique): user_<current()>@lcqd.fr
         plainPassword: 'password'
-        roles: 'ROLE_USER'
+        roles: ['ROLE_API_USER']
         enabled: 80%? true
         lastLogin: <dateTimeBetween('-10 day', '-1 day')>
         avatar: @avatar_*

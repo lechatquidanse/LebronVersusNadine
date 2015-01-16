@@ -59,6 +59,7 @@ class AvatarController extends FOSRestController
         if (!($avatar = $this->container->get('lcqd_playstation.avatar.manager')->get($id))) {
             throw new NotFoundHttpException(sprintf('The avatar \'%s\' was not found.', $id));
         }
+        
         return $avatar;
     }
 }

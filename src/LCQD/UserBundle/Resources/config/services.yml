@@ -1,0 +1,6 @@
+services:
+    lcqd_user.registration_success:
+        class: LCQD\UserBundle\EventListener\RegistrationSuccessListener
+        arguments: [@router, @lcqd_playstation.avatar.manager]
+        tags:
+            - { name: kernel.event_subscriber }

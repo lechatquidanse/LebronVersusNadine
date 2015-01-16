@@ -3,6 +3,7 @@
 namespace LCQD\AppCommonBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\FormFactoryInterface;
 
 abstract class BaseManager implements ManagerInterface
@@ -29,7 +30,7 @@ abstract class BaseManager implements ManagerInterface
      */
     public function get($id)
     {
-        return $this->repository->find($id);
+        return $this->getRepository()->find($id);
     }
 
     /**
@@ -42,6 +43,16 @@ abstract class BaseManager implements ManagerInterface
      */
     public function all($limit = 5, $offset = 0)
     {
-        return $this->repository->findBy(array(), null, $limit, $offset);
+        return $this->getRepository()->findBy(array(), null, $limit, $offset);
+    }
+
+    /**
+     * Get Repository Entity
+     * 
+     * @return EntityRepository
+     */
+    protected function getRepository()
+    {
+        return $this->repository;
     }
 }

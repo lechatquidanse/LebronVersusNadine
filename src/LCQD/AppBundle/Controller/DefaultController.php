@@ -15,6 +15,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        //$avatar = $this->container->get('lcqd_playstation.avatar.manager')->getOneRandom();
+        //var_dump($avatar);die;
         return $this->render('LCQDAppBundle:Default:index.html.twig');
     }
 }
