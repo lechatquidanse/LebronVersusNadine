@@ -2,6 +2,11 @@
 
 namespace LCQD\AppCommonBundle\Manager;
 
+/**
+ * ManagerInterface
+ * 
+ * @author lechatquidanse
+ */
 interface ManagerInterface
 {
     /**

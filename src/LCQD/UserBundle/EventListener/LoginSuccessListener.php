@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
 
+/**
+ * LoginSuccessListener
+ * 
+ * @author lechatquidanse
+ */
 class LoginSuccessListener implements AuthenticationSuccessHandlerInterface
 {
     protected $router;

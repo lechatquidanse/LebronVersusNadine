@@ -5,6 +5,11 @@ namespace LCQD\AppBundle\DataFixtures\ORM;
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Nelmio\Alice\Fixtures;
 
+/**
+ * AppFixtures
+ * 
+ * @author lechatquidanse
+ */
 class AppFixtures extends DataFixtureLoader
 {
     /**

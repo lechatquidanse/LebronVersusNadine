@@ -4,6 +4,11 @@ namespace LCQD\ApiBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * DefaultControllerTest
+ * 
+ * @author lechatquidanse
+ */
 class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()

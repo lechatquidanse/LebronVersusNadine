@@ -12,6 +12,8 @@ use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="LCQD\PlaystationBundle\Entity\AvatarRepository")
  * @ORM\Table(name="lcqd_avatar")
+ * 
+ * @author lechatquidanse
  */
 class Avatar extends BaseAvatar
 {

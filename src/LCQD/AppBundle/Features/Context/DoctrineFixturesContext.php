@@ -12,6 +12,11 @@ use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader as DataFixturesLoa
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 
+/**
+ * DoctrineFixturesContext
+ * 
+ * @author lechatquidanse
+ */
 class DoctrineFixturesContext implements Context, KernelAwareContext
 {
     /**

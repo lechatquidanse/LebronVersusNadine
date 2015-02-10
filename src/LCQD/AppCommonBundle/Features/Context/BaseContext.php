@@ -16,7 +16,9 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- *
+ * BaseContext
+ * 
+ * @author lechatquidanse
  */
 abstract class BaseContext extends RawMinkContext implements Context, KernelAwareContext, SnippetAcceptingContext
 {

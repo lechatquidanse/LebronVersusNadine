@@ -3,7 +3,9 @@
 namespace LCQD\PlaystationBundle\Model;
 
 /**
- * Avatar model
+ * Avatar
+ * 
+ * @author lechatquidanse
  */
 abstract class Avatar implements AvatarInterface
 {

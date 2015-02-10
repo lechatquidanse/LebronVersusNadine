@@ -5,7 +5,9 @@ namespace LCQD\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
+ * DefaultController
  * 
+ * @author lechatquidanse
  */
 class DefaultController extends Controller
 {

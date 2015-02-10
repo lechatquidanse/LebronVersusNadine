@@ -4,6 +4,11 @@ namespace LCQD\UserBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
 
+/**
+ * User
+ * 
+ * @author lechatquidanse
+ */
 abstract class User extends BaseUser implements UserInterface
 {
     public function __construct()

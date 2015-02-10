@@ -6,6 +6,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\FormFactoryInterface;
 
+/**
+ * BaseManager
+ * 
+ * @author lechatquidanse
+ */
 abstract class BaseManager implements ManagerInterface
 {
     private $om;

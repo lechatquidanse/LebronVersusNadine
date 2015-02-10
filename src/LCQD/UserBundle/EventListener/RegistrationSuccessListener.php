@@ -11,7 +11,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
+ * RegistrationSuccessListener
  * Listener responsible to init account of user with ROLE_USER user
+ *
+ * @author lechatquidanse
  */
 class RegistrationSuccessListener implements EventSubscriberInterface
 {

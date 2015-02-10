@@ -2,8 +2,10 @@
 
 namespace LCQD\ApiBundle\Controller;
 
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Util\Codes;
@@ -11,13 +13,12 @@ use FOS\RestBundle\Controller\Annotations;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 
-use Symfony\Component\Form\FormTypeInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
+ * UserController
  * 
+ * @author lechatquidanse
  */
 class UserController extends FOSRestController
 {

@@ -6,7 +6,10 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use LCQD\AppCommonBundle\Features\Context\BaseContext;
 
 /**
+ * BrowserContext
  * Defines application features from the specific context.
+ * 
+ * @author lechatquidanse
  */
 class BrowserContext extends BaseContext
 {

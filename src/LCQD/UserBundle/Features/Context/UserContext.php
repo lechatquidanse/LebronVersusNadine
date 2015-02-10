@@ -6,7 +6,10 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use LCQD\AppCommonBundle\Features\Context\BaseContext;
 
 /**
+ * UserContext
  * Defines application features from the specific context.
+ * 
+ * @author lechatquidanse
  */
 class UserContext extends BaseContext
 {

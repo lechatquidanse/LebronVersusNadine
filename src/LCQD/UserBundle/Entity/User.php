@@ -7,8 +7,12 @@ use LCQD\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * User
+ * 
  * @ORM\Entity
  * @ORM\Table(name="lcqd_user")
+ * 
+ * @author lechatquidanse
  */
 class User extends BaseUser
 {

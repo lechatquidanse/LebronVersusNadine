@@ -7,8 +7,9 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\NoResultException;
 
 /**
- * Class AvatarRepository
+ * AvatarRepository
  * 
+ * @author lechatquidanse
  */
 class AvatarRepository extends EntityRepository
 {

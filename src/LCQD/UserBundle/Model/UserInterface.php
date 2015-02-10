@@ -4,6 +4,11 @@ namespace LCQD\UserBundle\Model;
 
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
 
+/**
+ * UserInterface
+ * 
+ * @author lechatquidanse
+ */
 interface UserInterface
 {
 
@@ -19,5 +24,5 @@ interface UserInterface
     public function getAvatar();
 
     public function getDefaultRoles();
-    public function setDefaultRoles():
+    public function setDefaultRoles();
 }
