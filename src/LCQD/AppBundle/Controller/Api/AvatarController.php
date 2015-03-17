@@ -28,14 +28,17 @@ class AvatarController extends FOSRestController
      * @ApiDoc(
      *   resource = true,
      *   description = "Gets an Avatar for a given id",
-     *   output = "LCQD\Playstation\Bundle\Entity\Avatar",
+     *   output = "AvatarInterface",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *     404 = "Returned when the avatar is not found"
      *   }
      * )
      *
-     * @Annotations\View(templateVar="avatar")
+     * @Annotations\View(
+     *     templateVar="avatar",
+     *     template="lcqd/app/api/avatar/getAvatar.html.twig"
+     * )
      *
      * @param int     $id      the page id
      *
@@ -45,8 +48,9 @@ class AvatarController extends FOSRestController
      */
     public function getAvatarAction($id)
     {
-        $page = $this->getOr404($id);
-        return $page;
+        $avatar = $this->getOr404($id);
+
+        return $avatar;
     }
 
     /**

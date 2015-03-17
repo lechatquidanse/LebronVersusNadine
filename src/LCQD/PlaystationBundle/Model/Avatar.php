@@ -9,4 +9,8 @@ namespace LCQD\PlaystationBundle\Model;
  */
 abstract class Avatar implements AvatarInterface
 {
+    public function isEnabled()
+    {
+        return $this->getIsEnabled();
+    }
 }

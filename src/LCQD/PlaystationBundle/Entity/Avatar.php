@@ -48,6 +48,13 @@ class Avatar extends BaseAvatar
     protected $aboutMe;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_enabled", type="boolean")
+     */
+    protected $isEnabled = true;
+
+    /**
      * @var Datetime
      * 
      * @Gedmo\Timestampable(on="create")
@@ -115,6 +122,25 @@ class Avatar extends BaseAvatar
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * @param boolean $isEnabled
+     * @return Avatar
+     */
+    public function setIsEnabled($isEnabled)
+    {
+        $this->isEnabled = $isEnabled;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsEnabled()
+    {
+        return $this->isEnabled;
     }
 
     /**

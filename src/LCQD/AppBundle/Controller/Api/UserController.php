@@ -26,15 +26,15 @@ class UserController extends FOSRestController
      * Get Me.
      *
      * @ApiDoc(
-     *   resource = true,
-     *   statusCodes = {
-     *     200 = "Returned when successful"
-     *   }
+     *     resource = true,
+     *     statusCodes = {
+     *         200 = "Returned when successful"
+     *     }
      * )
      *
      * @Annotations\View(
-     *  templateVar="user",
-     *  template="lcqd/app/api/user/getMe.html.twig"
+     *     templateVar="user",
+     *     template="lcqd/app/api/user/getMe.html.twig"
      * )
      *
      * @param Request               $request      the request object

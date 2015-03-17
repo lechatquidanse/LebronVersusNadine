@@ -26,17 +26,18 @@ class AvatarsController extends FOSRestController
      * List all avatars.
      *
      * @ApiDoc(
-     *   resource = true,
-     *   statusCodes = {
-     *     200 = "Returned when successful"
-     *   }
+     *     resource = true,
+     *     statusCodes = {
+     *         200 = "Returned when successful"
+     *     }
      * )
      *
      * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing avatars.")
      * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many avatars to return.")
      *
      * @Annotations\View(
-     *  templateVar="avatars"
+     *     templateVar="avatars",
+     *     template="lcqd/app/api/avatars/getAvatars.html.twig"
      * )
      *
      * @param Request               $request      the request object
