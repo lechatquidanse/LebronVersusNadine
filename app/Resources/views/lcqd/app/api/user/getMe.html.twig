@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<ul>
+		<li>id: {{ user.id }}</li>
+		<li>username: {{ user.username }}</li>
+		<li>email: {{ user.email }}</li>
+		<li>avatar: {{ user.avatar.id }}</li>
+	</ul>
+	
+{% endblock %}

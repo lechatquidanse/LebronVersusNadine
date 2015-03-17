@@ -3,6 +3,7 @@
 namespace LCQD\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * DefaultController
@@ -12,13 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * [indexAction description]
-     * @return [type] [description]
+     * @Route("/", name="lcqd_app_homepage")
      */
     public function indexAction()
     {
-        //$avatar = $this->container->get('lcqd_playstation.avatar.manager')->getOneRandom();
-        //var_dump($avatar);die;
-        return $this->render('LCQDAppBundle:Default:index.html.twig');
+        $avatar = $this->container->get('lcqd_playstation.avatar.manager')->getOneRandom();
+        
+        return $this->render('lcqd/app/index.html.twig');
     }
 }

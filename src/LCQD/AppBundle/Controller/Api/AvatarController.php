@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\ApiBundle\Controller;
+namespace LCQD\AppBundle\Controller\Api;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

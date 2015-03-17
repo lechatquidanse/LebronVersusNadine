@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\ApiBundle\Controller;
+namespace LCQD\AppBundle\Controller\Api;
 
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +33,8 @@ class UserController extends FOSRestController
      * )
      *
      * @Annotations\View(
-     *  templateVar="user"
+     *  templateVar="user",
+     *  template="lcqd/app/api/user/getMe.html.twig"
      * )
      *
      * @param Request               $request      the request object
