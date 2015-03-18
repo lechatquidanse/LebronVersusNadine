@@ -18,6 +18,9 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 /**
  * UserController
  * 
+ * @Annotations\Prefix("/v1")
+ * @Annotations\NamePrefix("api_1_")
+ * 
  * @author lechatquidanse
  */
 class UserController extends FOSRestController
@@ -31,7 +34,7 @@ class UserController extends FOSRestController
      *         200 = "Returned when successful"
      *     }
      * )
-     *
+     * 
      * @Annotations\View(
      *     templateVar="user",
      *     template="lcqd/app/api/user/getMe.html.twig"

@@ -15,8 +15,13 @@ use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use LCQD\Playstation\Bundle\Model\AvatarInterface;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 /**
  * AvatarsController
+ * 
+ * @Annotations\Prefix("/v1")
+ * @Annotations\NamePrefix("api_1_")
  * 
  * @author lechatquidanse
  */
@@ -31,10 +36,10 @@ class AvatarsController extends FOSRestController
      *         200 = "Returned when successful"
      *     }
      * )
-     *
+     * 
      * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing avatars.")
      * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many avatars to return.")
-     *
+     * 
      * @Annotations\View(
      *     templateVar="avatars",
      *     template="lcqd/app/api/avatars/getAvatars.html.twig"

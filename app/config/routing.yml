@@ -2,11 +2,6 @@ lcqd_app:
     resource: "@LCQDAppBundle/Resources/config/routing.yml"
     prefix:   /
 
-lcqd_app_api:
-    type: rest
-    resource: "@LCQDAppBundle/Resources/config/routing_api.yml"
-    prefix:   /api
-
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

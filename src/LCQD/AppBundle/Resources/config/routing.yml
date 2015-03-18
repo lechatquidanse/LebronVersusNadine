@@ -1,3 +1,18 @@
 lcqd_app:
-    resource: "@LCQDAppBundle/Controller/DefaultController.php"
+    resource: LCQD\AppBundle\Controller\DefaultController
     type:     annotation
+
+lcqd_app_api_avatars:
+    resource: LCQD\AppBundle\Controller\Api\AvatarsController
+    type: rest
+    prefix: /api
+
+lcqd_app_api_avatar:
+    resource: LCQD\AppBundle\Controller\Api\AvatarController
+    type: rest
+    prefix: /api
+
+lcqd_app_api_user:
+    resource: LCQD\AppBundle\Controller\Api\UserController
+    type: rest
+    prefix: /api
