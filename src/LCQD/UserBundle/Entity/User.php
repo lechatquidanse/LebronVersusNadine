@@ -2,9 +2,10 @@
 
 namespace LCQD\UserBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
 use LCQD\UserBundle\Model\User as BaseUser;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
@@ -16,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+    
     /**
      * @var integer
      * 

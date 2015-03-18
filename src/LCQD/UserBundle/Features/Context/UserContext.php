@@ -3,7 +3,7 @@
 namespace LCQD\UserBundle\Features\Context;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use LCQD\AppCommonBundle\Features\Context\BaseContext;
+use LCQD\Component\Features\Context\BaseContext;
 
 /**
  * UserContext

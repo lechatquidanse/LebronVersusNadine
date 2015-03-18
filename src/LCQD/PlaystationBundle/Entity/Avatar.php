@@ -2,8 +2,10 @@
 
 namespace LCQD\PlaystationBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
+use LCQD\Component\Doctrine\Model as DoctrineModel;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
 
 /**
@@ -17,6 +19,9 @@ use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
  */
 class Avatar extends BaseAvatar
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+    use DoctrineModel\Enabled;
+
     /**
      * @var integer
      *
@@ -48,35 +53,12 @@ class Avatar extends BaseAvatar
     protected $aboutMe;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_enabled", type="boolean")
-     */
-    protected $isEnabled = true;
-
-    /**
      * @var Datetime
      * 
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="birthday_at", type="datetime", nullable=true)
      */
     private $birthdayAt;
-
-    /**
-     * @var Datetime
-     * 
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
-     */
-    private $createdAt;
-
-    /**
-     * @var Datetime
-     * 
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
-     */
-    private $updatedAt;
 
     /**
      * @return integer
@@ -125,25 +107,6 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @param boolean $isEnabled
-     * @return Avatar
-     */
-    public function setIsEnabled($isEnabled)
-    {
-        $this->isEnabled = $isEnabled;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getIsEnabled()
-    {
-        return $this->isEnabled;
-    }
-
-    /**
      * @param string $aboutMe
      * @return Avatar
      */
@@ -179,43 +142,5 @@ class Avatar extends BaseAvatar
     public function getBirthdayAt()
     {
         return $this->birthdayAt;
-    }
-
-    /**
-     * @param Datetime $createdAt
-     * @return Avatar
-     */
-    public function setCreatedAt(\Datetime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Datetime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param Datetime $updatedAt
-     * @return Avatar
-     */
-    public function setUpdatedAt(\Datetime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return datetime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

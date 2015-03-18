@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\AppCommonBundle\Features\Context;
+namespace LCQD\Component\Features\Context;
 
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\RawMinkContext;

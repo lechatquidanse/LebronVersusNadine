@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new LCQD\UserBundle\LCQDUserBundle(),
             new LCQD\AppBundle\LCQDAppBundle(),
-            new LCQD\AppCommonBundle\LCQDAppCommonBundle(),
             new LCQD\PlayStationBundle\LCQDPlaystationBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),

@@ -2,6 +2,9 @@ parameters:
 #    lcqd_app.example.class: LCQD\AppBundle\Example
 
 services:
-#    lcqd_app.example:
-#        class: %lcqd_app.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    # enabled doctrine filter gloablly on before request event
+    doctrine_before_request_listener:
+        class: LCQD\AppBundle\EventListener\DoctrineBeforeRequestListener
+        arguments: ["@doctrine.orm.entity_manager", "@knp.doctrine_behaviors.reflection.class_analyzer"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

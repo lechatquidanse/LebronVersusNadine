@@ -9,7 +9,6 @@ namespace LCQD\PlaystationBundle\Model;
  */
 interface AvatarInterface
 {
-
     /**
      * @return integer
      */
@@ -38,17 +37,6 @@ interface AvatarInterface
     public function getLastname();
 
     /**
-     * @param boolean $isEnabled
-     * @return Avatar
-     */
-    public function setIsEnabled($isEnabled);
-    
-    /**
-     * @return boolean
-     */
-    public function getIsEnabled();
-
-    /**
      * @param string $aboutMe
      * @return Avatar
      */
@@ -69,26 +57,4 @@ interface AvatarInterface
      * @return Datetime
      */
     public function getBirthdayAt();
-
-    /**
-     * @param Datetime $createdAt
-     * @return Avatar
-     */
-    public function setCreatedAt(\Datetime $createdAt);
-
-    /**
-     * @return Datetime
-     */
-    public function getCreatedAt();
-
-    /**
-     * @param Datetime $updatedAt
-     * @return Avatar
-     */
-    public function setUpdatedAt(\Datetime $updatedAt);
-
-    /**
-     * @return datetime
-     */
-    public function getUpdatedAt();
 }

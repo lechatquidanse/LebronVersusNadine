@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
     #esi:             ~
@@ -60,6 +61,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        # filters
+        filters:
+            entity_enabled: LCQD\AppBundle\Doctrine\EnabledFilter
 
 # Swiftmailer Configuration
 swiftmailer:

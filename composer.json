@@ -26,7 +26,8 @@
         "willdurand/rest-extra-bundle": "~1.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "gedmo/doctrine-extensions": "~2.3",
-        "hautelook/alice-bundle": "0.2.*"
+        "hautelook/alice-bundle": "0.2.*",
+        "knplabs/doctrine-behaviors": "1.1.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

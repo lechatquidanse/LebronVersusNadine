@@ -1,12 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-	<ul>
-		<li>id: {{ avatar.id }}</li>
-		<li>firstname: {{ avatar.firstname }}</li>
-		<li>lastname: {{ avatar.lastname }}</li>
-		<li>about: {{ avatar.aboutMe }}</li>
-	</ul>
-	
+	<h1>Avatars</h1>
+	{{ dump(avatars) }}
 {% endblock %}

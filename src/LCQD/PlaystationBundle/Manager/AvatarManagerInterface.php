@@ -2,8 +2,6 @@
 
 namespace LCQD\PlaystationBundle\Manager;
 
-use LCQD\AppCommonBundle\Manager\BaseManager;
-
 /**
  * AvatarManagerInterface
  * 

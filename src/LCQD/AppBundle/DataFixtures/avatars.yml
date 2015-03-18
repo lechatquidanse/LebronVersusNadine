@@ -3,5 +3,4 @@ LCQD\PlaystationBundle\Entity\Avatar:
         firstname: <firstName()>
         lastname: 80%? <lastName()>
         aboutMe: 50%? <text()>
-        isEnabled: 80%? false : true
         birthdayAt: 80%? <dateTime()>

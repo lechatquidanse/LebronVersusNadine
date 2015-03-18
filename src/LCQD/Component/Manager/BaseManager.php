@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\AppCommonBundle\Manager;
+namespace LCQD\Component\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
