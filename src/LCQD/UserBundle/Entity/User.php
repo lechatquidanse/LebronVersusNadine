@@ -3,6 +3,7 @@
 namespace LCQD\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
 use LCQD\UserBundle\Model\User as BaseUser;
@@ -12,6 +13,15 @@ use LCQD\UserBundle\Model\User as BaseUser;
  * 
  * @ORM\Entity
  * @ORM\Table(name="lcqd_user")
+ *
+ * @Hateoas\Relation(
+ *     "self",
+ *     href = @Hateoas\Route(
+ *          "api_1_get_me",
+ *          parameters = { "_format" = "json" },
+ *          absolute = true
+ *     )
+ * )
  * 
  * @author lechatquidanse
  */

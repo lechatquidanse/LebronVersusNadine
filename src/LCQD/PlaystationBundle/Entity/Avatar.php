@@ -2,10 +2,11 @@
 
 namespace LCQD\PlaystationBundle\Entity;
 
-use LCQD\Component\Doctrine\Model as DoctrineModel;
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use LCQD\Component\Doctrine\Model as DoctrineModel;
 use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
 
 /**
@@ -14,6 +15,18 @@ use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="LCQD\PlaystationBundle\Entity\AvatarRepository")
  * @ORM\Table(name="lcqd_avatar")
+ * 
+ * @Hateoas\Relation(
+ *     "self",
+ *     href = @Hateoas\Route(
+ *          "api_1_get_avatar",
+ *          parameters = { 
+ *              "id" = "expr(object.getId())",
+ *              "_format" = "json"
+ *          },
+ *          absolute = true
+ *     )
+ * )
  * 
  * @author lechatquidanse
  */
