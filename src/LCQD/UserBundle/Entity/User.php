@@ -39,7 +39,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-    * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"}, inversedBy="users")
     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
     */
     private $avatar;

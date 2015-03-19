@@ -2,9 +2,11 @@
 
 namespace LCQD\PlaystationBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\Component\Doctrine\Model as DoctrineModel;
 use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
@@ -72,6 +74,21 @@ class Avatar extends BaseAvatar
      * @ORM\Column(name="birthday_at", type="datetime", nullable=true)
      */
     private $birthdayAt;
+
+
+    /**
+    * @ORM\OneToMany(targetEntity="LCQD\UserBundle\Entity\User", mappedBy="avatar")
+    * @Serializer\Exclude
+    */
+    private $users;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * @return integer
@@ -155,5 +172,41 @@ class Avatar extends BaseAvatar
     public function getBirthdayAt()
     {
         return $this->birthdayAt;
+    }
+
+    /**
+     * setUsers
+     * 
+     * @param ArrayCollection $users
+     * @return Avatar
+     */
+    public function setUsers(ArrayCollection $users)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * getUsers
+     * 
+     * @return ArrayCollection|null
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * countUsers
+     * Return the number of users that use this avatar
+     *
+     * @Serializer\VirtualProperty
+     * 
+     * @return int
+     */
+    public function countUsers()
+    {
+        return $this->users->count();
     }
 }
