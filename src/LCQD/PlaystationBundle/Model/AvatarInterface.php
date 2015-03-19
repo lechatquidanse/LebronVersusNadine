@@ -10,6 +10,8 @@ namespace LCQD\PlaystationBundle\Model;
 interface AvatarInterface
 {
     /**
+     * Get id
+     * 
      * @return integer
      */
     public function getId();

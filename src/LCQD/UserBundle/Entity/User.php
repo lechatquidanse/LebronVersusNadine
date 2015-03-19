@@ -27,6 +27,9 @@ use LCQD\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    /**
+     * Add properties, created and updated datetime informations
+     */
     use ORMBehaviors\Timestampable\Timestampable;
     
     /**

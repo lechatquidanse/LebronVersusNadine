@@ -1,8 +1,13 @@
 parameters:
     lcqd_playstation.avatar.entity.class: LCQD\PlaystationBundle\Entity\Avatar
     lcqd_playstation.avatar.manager.class: LCQD\PlaystationBundle\Manager\AvatarManager
+    lcqd_playstation.picture.entity.class: LCQD\PlaystationBundle\Entity\Picture
+    lcqd_playstation.picture.manager.class: LCQD\PlaystationBundle\Manager\PictureManager
 
 services:
     lcqd_playstation.avatar.manager:
         class: %lcqd_playstation.avatar.manager.class%
         arguments: [@doctrine.orm.entity_manager, %lcqd_playstation.avatar.entity.class%, @form.factory]
+    lcqd_playstation.picture.manager:
+        class: %lcqd_playstation.picture.manager.class%
+        arguments: [@doctrine.orm.entity_manager, %lcqd_playstation.picture.entity.class%, @form.factory]

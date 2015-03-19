@@ -9,4 +9,9 @@
 		<li>about: {{ avatar.aboutMe }}</li>
 	</ul>
 	
+	<ul>
+		{% for picture in avatar.pictures %}
+			<li><img src="/{{ picture.webPath() }}"></li>
+		{% endfor %}
+	</ul>
 {% endblock %}

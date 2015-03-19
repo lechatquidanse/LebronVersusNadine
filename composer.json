@@ -27,7 +27,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "gedmo/doctrine-extensions": "~2.3",
         "hautelook/alice-bundle": "0.2.*",
-        "knplabs/doctrine-behaviors": "1.1.*@dev"
+        "knplabs/doctrine-behaviors": "1.1.*@dev",
+        "guzzlehttp/guzzle": "~5.0"
     },
     "scripts": {
         "post-install-cmd": [

@@ -34,7 +34,14 @@ use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
  */
 class Avatar extends BaseAvatar
 {
+    /**
+     * Add properties, created and updated datetime informations
+     */
     use ORMBehaviors\Timestampable\Timestampable;
+
+    /**
+     * Add property enabled, used as a flag
+     */
     use DoctrineModel\Enabled;
 
     /**
@@ -73,20 +80,29 @@ class Avatar extends BaseAvatar
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="birthday_at", type="datetime", nullable=true)
      */
-    private $birthdayAt;
-
+    protected $birthdayAt;
 
     /**
-    * @ORM\OneToMany(targetEntity="LCQD\UserBundle\Entity\User", mappedBy="avatar")
-    * @Serializer\Exclude
-    */
-    private $users;
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="LCQD\PlaystationBundle\Entity\Picture", mappedBy="avatar", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $pictures;
+
+    /**
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="LCQD\UserBundle\Entity\User", mappedBy="avatar")
+     * @Serializer\Exclude
+     */
+    protected $users;
 
     /**
      * __construct
      */
     public function __construct()
     {
+        $this->pictures = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
@@ -188,6 +204,59 @@ class Avatar extends BaseAvatar
     }
 
     /**
+     * Add a new picture
+     *
+     * @param Picture $picture The picture
+     *
+     * @return Avatar
+     */
+    public function addPicture(Picture $picture)
+    {
+        $picture->setAvatar($this);
+        $this->pictures[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove a picture
+     *
+     * @param Picture $picture The picture
+     *
+     * @return Avatar
+     */
+    public function removePicture(Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+
+        return $this;
+    }
+
+    /**
+     * Set all pictures
+     * 
+     * @param ArrayCollection $pictures
+     *
+     * @return Avatar
+     */
+    public function setPictures(ArrayCollection $pictures)
+    {
+        $this->pictures = $pictures;
+
+        return $this;
+    }
+
+    /**
+     * Get all pictures
+     *
+     * @return ArrayCollection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
      * getUsers
      * 
      * @return ArrayCollection|null
@@ -198,7 +267,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * countUsers
+     * Count Users
      * Return the number of users that use this avatar
      *
      * @Serializer\VirtualProperty
@@ -208,5 +277,18 @@ class Avatar extends BaseAvatar
     public function countUsers()
     {
         return $this->users->count();
+    }
+
+    /**
+     * Count Pictures
+     * Return the number of pictures for this avatar
+     *
+     * @Serializer\VirtualProperty
+     * 
+     * @return int
+     */
+    public function countPictures()
+    {
+        return $this->pictures->count();
     }
 }
