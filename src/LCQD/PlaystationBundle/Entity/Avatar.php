@@ -107,7 +107,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @return integer
+     * {@inheritDoc}
      */
     public function getId()
     {
@@ -115,8 +115,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @param string $firstname
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setFirstname($firstname)
     {
@@ -126,7 +125,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
     public function getFirstname()
     {
@@ -134,8 +133,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @param string $lastname
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setLastname($lastname)
     {
@@ -145,7 +143,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
     public function getLastname()
     {
@@ -153,8 +151,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @param string $aboutMe
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setAboutMe($aboutMe)
     {
@@ -164,7 +161,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
     public function getAboutMe()
     {
@@ -172,8 +169,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @param Datetime $birthdayAt
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setBirthdayAt(\Datetime $birthdayAt = null)
     {
@@ -183,7 +179,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * @return Datetime
+     * {@inheritDoc}
      */
     public function getBirthdayAt()
     {
@@ -191,10 +187,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * setUsers
-     * 
-     * @param ArrayCollection $users
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setUsers(ArrayCollection $users)
     {
@@ -203,12 +196,9 @@ class Avatar extends BaseAvatar
         return $this;
     }
 
+
     /**
-     * Add a new picture
-     *
-     * @param Picture $picture The picture
-     *
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function addPicture(Picture $picture)
     {
@@ -219,11 +209,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * Remove a picture
-     *
-     * @param Picture $picture The picture
-     *
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function removePicture(Picture $picture)
     {
@@ -233,11 +219,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * Set all pictures
-     * 
-     * @param ArrayCollection $pictures
-     *
-     * @return Avatar
+     * {@inheritDoc}
      */
     public function setPictures(ArrayCollection $pictures)
     {
@@ -247,9 +229,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * Get all pictures
-     *
-     * @return ArrayCollection
+     * {@inheritDoc}
      */
     public function getPictures()
     {
@@ -257,9 +237,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * getUsers
-     * 
-     * @return ArrayCollection|null
+     * {@inheritDoc}
      */
     public function getUsers()
     {
