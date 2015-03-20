@@ -87,6 +87,7 @@ class AvatarController extends FOSRestController
      *       resource = true,
      *       description = "Creates a new page from the submitted data.",
      *       input = "LCQD\PlaystationBundle\Form\AvatarType",
+     *       ouptut = "LCQD\PlaystationBundle\Entity\Avatar",
      *       statusCodes = {
      *           200 = "Returned when successful",
      *           400 = "Returned when the form has errors"

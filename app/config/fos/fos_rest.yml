@@ -25,3 +25,7 @@ fos_rest:
         json: true
     body_listener: true
     disable_csrf_role: ROLE_API_USER
+
+# Rest Api Doc
+nelmio_api_doc:
+    name: API Documentation
