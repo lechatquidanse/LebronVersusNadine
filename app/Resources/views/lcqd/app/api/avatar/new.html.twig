@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Create Avatar Form</h1>
+    {%  if (form is not null) %}
+    <form action="{{ url('api_1_post_avatar') }}" method="POST" {{ form_enctype(form) }}>
+        {{ form_rest(form) }}
+        <input type="submit" value="submit">
+    </form>
+    {% endif %}
+
+{% endblock %}

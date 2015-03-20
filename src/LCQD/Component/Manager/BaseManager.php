@@ -13,10 +13,10 @@ use Symfony\Component\Form\FormFactoryInterface;
  */
 abstract class BaseManager implements ManagerInterface
 {
-    private $om;
-    private $entityClass;
-    private $repository;
-    private $formFactory;
+    protected $om;
+    protected $entityClass;
+    protected $repository;
+    protected $formFactory;
 
     public function __construct(ObjectManager $om, $entityClass, FormFactoryInterface $formFactory)
     {
@@ -49,6 +49,49 @@ abstract class BaseManager implements ManagerInterface
     public function all($limit = 5, $offset = 0)
     {
         return $this->getRepository()->findBy(array(), null, $limit, $offset);
+    }
+
+    /**
+     * Persist an entity
+     * 
+     * @param  object $entity
+     * @return null
+     */
+    protected function persist($entity)
+    {
+        $this->om->persist($entity);
+    }
+
+    /**
+     * Flush 
+     * 
+     * @return null
+     */
+    protected function flush()
+    {
+        $this->om->flush();
+    }
+
+    /**
+     * Persist an entity and then flush
+     * 
+     * @param  object $entity 
+     * @return null
+     */
+    protected function persistAndFlush($entity)
+    {
+        $this->persist($entity);
+        $this->flush();
+    }
+
+    /**
+     * Create one instance of $this->entityClass
+     * 
+     * @return object
+     */
+    protected function create()
+    {
+        return new $this->entityClass();
     }
 
     /**

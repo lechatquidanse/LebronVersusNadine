@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<ul>
+		<li>id: {{ avatar.id }}</li>
+		<li>firstname: {{ avatar.firstname }}</li>
+		<li>lastname: {{ avatar.lastname }}</li>
+		<li>about: {{ avatar.aboutMe }}</li>
+	</ul>
+	
+	<ul>
+		{% for picture in avatar.pictures %}
+			<li><img src="/{{ picture.webPath() }}"></li>
+		{% endfor %}
+	</ul>
+{% endblock %}
