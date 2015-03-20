@@ -1,6 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    # FriendOfSymfony Bundles
+    - { resource: fos/fos_rest.yml }
+    - { resource: fos/fos_user.yml }
+    # Doctrine extensions
     - { resource: doctrine_extensions.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
@@ -75,34 +79,3 @@ swiftmailer:
 
 # Rest Api Doc
 nelmio_api_doc: ~
-
-# FOS user
-fos_user:
-    db_driver: orm
-    firewall_name: api
-    user_class: LCQD\UserBundle\Entity\User
-
-# FOS Rest
-fos_rest:
-    param_fetcher_listener: true
-    view:
-        view_response_listener: 'force'
-        formats:
-            json: true
-            xml:  true
-        templating_formats:
-            html: true
-    format_listener:
-        rules:
-            - { path: ^/, priorities: [ json, html, xml ], fallback_format: ~, prefer_extension: true }
-    exception:
-        codes:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
-            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
-        messages:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
-    allowed_methods_listener: true
-    access_denied_listener:
-        json: true
-    body_listener: true
-    disable_csrf_role: ROLE_API

@@ -1,0 +1,5 @@
+# FOS user
+fos_user:
+    db_driver: orm
+    firewall_name: api
+    user_class: LCQD\UserBundle\Entity\User
