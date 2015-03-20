@@ -92,7 +92,7 @@ class Avatar extends BaseAvatar
     /**
      * @var ArrayCollection
      * 
-     * @ORM\OneToMany(targetEntity="LCQD\UserBundle\Entity\User", mappedBy="avatar")
+     * @ORM\OneToMany(targetEntity="LCQD\PlaystationBundle\Entity\User", mappedBy="avatar")
      * @Serializer\Exclude
      */
     protected $users;

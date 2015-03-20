@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\UserBundle\Listener;
+namespace LCQD\AppBundle\Listener;
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

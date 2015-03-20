@@ -8,3 +8,8 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@knp.doctrine_behaviors.reflection.class_analyzer"]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    lcqd_user.registration_success:
+        class: LCQD\AppBundle\EventListener\RegistrationSuccessListener
+        arguments: [@router, @lcqd_playstation.avatar.manager]
+        tags:
+            - { name: kernel.event_subscriber }

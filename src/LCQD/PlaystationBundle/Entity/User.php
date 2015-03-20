@@ -1,12 +1,12 @@
 <?php
 
-namespace LCQD\UserBundle\Entity;
+namespace LCQD\PlaystationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
-use LCQD\UserBundle\Model\User as BaseUser;
+use LCQD\PlaystationBundle\Model\User as BaseUser;
 
 /**
  * User

@@ -1,4 +1,4 @@
-LCQD\UserBundle\Entity\User:
+LCQD\PlaystationBundle\Entity\User:
     user_{1..10}:
         username: <firstName()>
         email (unique): user_<current()>@lcqd.fr

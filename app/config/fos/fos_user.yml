@@ -2,4 +2,4 @@
 fos_user:
     db_driver: orm
     firewall_name: api
-    user_class: LCQD\UserBundle\Entity\User
+    user_class: LCQD\PlaystationBundle\Entity\User

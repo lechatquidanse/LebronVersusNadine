@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\UserBundle\Features\Context;
+namespace LCQD\AppBundle\Features\Context;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use LCQD\Component\Features\Context\BaseContext;

@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\UserBundle\Model;
+namespace LCQD\PlaystationBundle\Model;
 
 use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
 

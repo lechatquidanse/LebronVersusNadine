@@ -1,6 +1,6 @@
 <?php
 
-namespace LCQD\UserBundle\EventListener;
+namespace LCQD\AppBundle\EventListener;
 
 use Doctrine\ORM\NoResultException;
 use LCQD\PlaystationBundle\Manager\AvatarManagerInterface;
