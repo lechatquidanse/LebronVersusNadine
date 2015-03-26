@@ -48,7 +48,7 @@ class RegistrationSuccessListener implements EventSubscriberInterface
     public function onRegistrationSuccess(FormEvent $event)
     {
         try {
-            /* @var $user \LCQD\UserBundle\Entity\User */
+            /* @var $user \LCQD\PlaystationBundle\Entity\User */
             $user = $event->getForm()->getData();
             
             if ($user->hasRole('ROLE_API_USER')) {
