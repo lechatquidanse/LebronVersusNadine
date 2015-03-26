@@ -12,6 +12,9 @@
 !var/logs/.gitkeep
 !var/tmp/.gitkeep
 
+# Docs
+/web/docs/*
+
 # Parameters
 /app/config/parameters.yml
 /app/config/parameters.ini
