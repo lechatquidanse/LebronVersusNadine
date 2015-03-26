@@ -79,6 +79,20 @@ interface AvatarInterface
      */
     public function getBirthdayAt();
 
+    /**
+     * Set Price
+     * 
+     * @param float $price
+     * @return Avatar
+     */
+    public function setPice($price);
+
+    /**
+     * Get Price
+     * 
+     * @return float
+     */
+    public function getPrice();
 
     /**
      * Set users

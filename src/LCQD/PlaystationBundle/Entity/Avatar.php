@@ -83,6 +83,13 @@ class Avatar extends BaseAvatar
     protected $birthdayAt;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float", nullable=true)
+     */
+    protected $price;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="LCQD\PlaystationBundle\Entity\Picture", mappedBy="avatar", cascade={"all"}, orphanRemoval=true)
@@ -184,6 +191,24 @@ class Avatar extends BaseAvatar
     public function getBirthdayAt()
     {
         return $this->birthdayAt;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 
     /**

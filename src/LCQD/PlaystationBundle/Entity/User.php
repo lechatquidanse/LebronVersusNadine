@@ -42,6 +42,13 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="funds", type="float", nullable=true)
+     */
+    protected $funds;
+
+    /**
     * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"}, inversedBy="users")
     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
     */
@@ -50,6 +57,24 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFunds($funds)
+    {
+        $this->funds = $funds;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFunds()
+    {
+        return $this->funds;
     }
 
     /**
