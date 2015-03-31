@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>Lebron VS Nadine</title>
+    <parser>
+        <target>web/docs/phpdoc/</target>
+        <encoding>utf8</encoding>
+    </parser>
+    <transformer>
+        <target>web/docs/phpdoc/</target>
+    </transformer>
+    <logging>
+        <level>warn</level>
+        <paths>
+            <default>{APP_ROOT}/var/logs/phpdoc_{DATE}.log</default>
+            <errors>{APP_ROOT}/var/logs/phpdoc_{DATE}.errors.log</errors>
+        </paths>
+    </logging>
+    <transformations>
+        <template name="clean" />
+    </transformations>
+    <files>
+        <directory>src/LCQD/PlaystationBundle</directory>
+        <ignore>src/LCQD/*/DependencyInjection/*</ignore>
+        <ignore>src/LCQD/*/Tests/*</ignore>
+        <ignore>bin/*</ignore>
+    </files>
+</phpdoc>

@@ -69,6 +69,7 @@ server:
     packages:
         - zsh
         - git-core
+        - graphviz
 users_groups:
     install: '1'
     groups: {  }
