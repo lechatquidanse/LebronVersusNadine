@@ -17,6 +17,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\Component\Doctrine\Model as DoctrineModel;
 use LCQD\PlaystationBundle\Model\AvatarInterface;
+use LCQD\PlaystationBundle\Entity\Avatar;
 use LCQD\PlaystationBundle\Model\PictureInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -77,7 +78,7 @@ class Picture implements PictureInterface
     /**
      * Avatar
      * 
-     * @var AvatarInterface
+     * @var Avatar
      *
      * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", inversedBy="pictures")
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
@@ -146,10 +147,10 @@ class Picture implements PictureInterface
     /**
      * {@inheritdoc}
      *
-     * @param Avatar $avatar The avatar
+     * @param AvatarInterface $avatar The avatar
      * @return Picture
      */
-    public function setAvatar(Avatar $avatar)
+    public function setAvatar(AvatarInterface $avatar)
     {
         $this->avatar = $avatar;
 
@@ -270,7 +271,7 @@ class Picture implements PictureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get the upload root dir
      *
      * @param string $folderName The folder name
      * @return string
@@ -281,7 +282,7 @@ class Picture implements PictureInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get the upload dir
      *
      * @param string $folderName The folder name
      * @return string

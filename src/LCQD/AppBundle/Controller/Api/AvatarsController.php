@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * @Annotations\Prefix("/v1")
  * @Annotations\NamePrefix("api_1_")
  * 
+ * @api
  * @author lechatquidanse
  */
 class AvatarsController extends FOSRestController

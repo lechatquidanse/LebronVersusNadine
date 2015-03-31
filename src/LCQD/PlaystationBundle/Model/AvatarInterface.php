@@ -95,7 +95,7 @@ interface AvatarInterface
      * @param float $price
      * @return AvatarInterface
      */
-    public function setPice($price);
+    public function setPrice($price);
 
     /**
      * Get Price

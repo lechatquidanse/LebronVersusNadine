@@ -15,8 +15,10 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use LCQD\PlaystationBundle\Model\Avatar;
 use LCQD\PlaystationBundle\Model\UserInterface;
+use LCQD\PlaystationBundle\Model\AvatarInterface;
+use InvalidArgumentException;
+use Exception;
 
 /**
  * User
@@ -117,10 +119,10 @@ class User extends BaseUser implements UserInterface
     /**
      * {@inheritdoc}
      *
-     * @param Avatar $avatar
+     * @param AvatarInterface $avatar
      * @return User
      */
-    public function setAvatar(Avatar $avatar)
+    public function setAvatar(AvatarInterface $avatar)
     {
         $this->avatar = $avatar;
 
@@ -157,5 +159,49 @@ class User extends BaseUser implements UserInterface
     public function setDefaultRoles()
     {
         $this->setRoles($this->getDefaultRoles());
+    }
+
+    /**
+     * {@inheritdoc}
+     * 
+     * @param  AvatarInterface $avatar
+     * @return boolean
+     */
+    public function hasFundsToBuyAvatar(AvatarInterface $avatar)
+    {
+        if ($avatar->getPrice() <= $this->getFunds()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Buy Avatar
+     * 
+     * @param  AvatarInterface $avatar
+     * @throws InvalidArgumentException If avatar is not enabled
+     * @throws Exception If avatar is already used by User, too expensive, or other
+     * @return boolean
+     */
+    public function buyAvatar(AvatarInterface $avatar)
+    {
+        if (!$avatar->isEnabled()) {
+            throw new InvalidArgumentException(sprintf("Buy Avatar, avatar %d is not enabled", $avatar->getId()), 1);
+        }
+
+        if ($this->getAvatar() == $avatar) {
+            throw new Exception(sprintf("Buy Avatar, avatar %d is already used by User", $avatar->getId()), 1);
+        }
+
+        if (!$this->hasFundsToBuyAvatar($avatar)) {
+            throw new Exception(sprintf("Buy Avatar, avatar %d is too expensive for User", $avatar->getId()), 1);
+        }
+
+        if (!$this->setAvatar($avatar)) {
+            throw new Exception(sprintf("Buy Avatar, avatar %d is too expensive for User", $avatar->getId()), 1);
+        }
+
+        return true;
     }
 }

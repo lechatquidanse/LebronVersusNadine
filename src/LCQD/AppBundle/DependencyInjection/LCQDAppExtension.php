@@ -10,12 +10,13 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * LCQDAppExtension
  * 
+ * @ignore
  * @author lechatquidanse
  */
 class LCQDAppExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {

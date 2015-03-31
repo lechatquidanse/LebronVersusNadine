@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\Component\Doctrine\Model as DoctrineModel;
 use LCQD\PlaystationBundle\Model\AvatarInterface;
-use LCQD\PlaystationBundle\Model\Avatar;
+use LCQD\PlaystationBundle\Model\PictureInterface;
 
 /**
  * Entity that extends {@inheritdoc} 
@@ -239,7 +239,7 @@ class Avatar implements AvatarInterface
      * @param float $price
      * @return Avatar
      */
-    public function setPice($price)
+    public function setPrice($price)
     {
         $this->price = $price;
 
@@ -271,10 +271,10 @@ class Avatar implements AvatarInterface
     /**
      * {@inheritdoc}
      *
-     * @param Picture $picture The picture
+     * @param PictureInterface $picture The picture
      * @return Avatar
      */
-    public function addPicture(Picture $picture)
+    public function addPicture(PictureInterface $picture)
     {
         $picture->setAvatar($this);
         $this->pictures[] = $picture;
@@ -285,10 +285,10 @@ class Avatar implements AvatarInterface
     /**
      * {@inheritdoc}
      *
-     * @param Picture $picture The picture
+     * @param PictureInterface $picture The picture
      * @return Avatar
      */
-    public function removePicture(Picture $picture)
+    public function removePicture(PictureInterface $picture)
     {
         $this->pictures->removeElement($picture);
 

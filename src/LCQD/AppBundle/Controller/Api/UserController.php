@@ -20,7 +20,8 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  * 
  * @Annotations\Prefix("/v1")
  * @Annotations\NamePrefix("api_1_")
- * 
+ *
+ * @api
  * @author lechatquidanse
  */
 class UserController extends FOSRestController

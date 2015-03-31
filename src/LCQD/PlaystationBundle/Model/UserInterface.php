@@ -72,4 +72,22 @@ interface UserInterface
      * Get Default Roles for UserInterface
      */
     public function setDefaultRoles();
+
+    /**
+     * Has Funds to Buay Avatar
+     *
+     * Check if User has engough funds to buy avatar
+     * 
+     * @param  AvatarInterface $avatar
+     * @return boolean
+     */
+    public function hasFundsToBuyAvatar(AvatarInterface $avatar);
+
+    /**
+     * Buy Avatar
+     * 
+     * @param  AvatarInterface $avatar
+     * @return boolean
+     */
+    public function buyAvatar(AvatarInterface $avatar);
 }

@@ -141,20 +141,4 @@ interface PictureInterface
      * @return string
      */
     public function getWebPicture();
-
-    /**
-     * Get the upload root dir
-     *
-     * @param string $folderName The folder name
-     * @return string
-     */
-    protected function getUploadRootDir($folderName = null);
-
-    /**
-     * Get the upload dir
-     *
-     * @param string $folderName The folder name
-     * @return string
-     */
-    protected function getUploadDir($folderName = null);
 }

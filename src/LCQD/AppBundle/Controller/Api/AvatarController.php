@@ -22,7 +22,8 @@ use LCQD\PlaystationBundle\Manager\AvatarManagerInterface;
  * 
  * @Annotations\Prefix("/v1")
  * @Annotations\NamePrefix("api_1_")
- * 
+ *
+ * @api
  * @author lechatquidanse
  */
 class AvatarController extends FOSRestController

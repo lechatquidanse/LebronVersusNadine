@@ -9,12 +9,13 @@ use Nelmio\Alice\Fixtures;
 /**
  * AppFixtures
  * 
+ * @ignore
  * @author lechatquidanse
  */
 class AppFixtures extends DataFixtureLoader
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function getFixtures()
     {
@@ -25,7 +26,7 @@ class AppFixtures extends DataFixtureLoader
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getOrder()
     {
@@ -33,7 +34,7 @@ class AppFixtures extends DataFixtureLoader
     }
     
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function getProcessors()
     {
