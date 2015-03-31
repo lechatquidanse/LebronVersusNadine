@@ -22,6 +22,7 @@
         <directory>src/LCQD/PlaystationBundle</directory>
         <ignore>src/LCQD/*/DependencyInjection/*</ignore>
         <ignore>src/LCQD/*/Tests/*</ignore>
+        <ignore>src/LCQD/PlaystationBundle/LCQDPlaystationBundle.php</ignore>
         <ignore>bin/*</ignore>
     </files>
 </phpdoc>

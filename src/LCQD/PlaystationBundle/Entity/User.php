@@ -12,10 +12,11 @@
 namespace LCQD\PlaystationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\PlaystationBundle\Model\Avatar;
-use FOS\UserBundle\Model\User as BaseUser;
+use LCQD\PlaystationBundle\Model\UserInterface;
 
 /**
  * User
