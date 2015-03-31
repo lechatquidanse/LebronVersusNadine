@@ -16,12 +16,12 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\NoResultException;
 
 /**
- * Picture Repository
- * 
- * Picture Doctrine query repository
+ * User Repository
+ *
+ * User Doctrine query repository
  * 
  * @author lechatquidanse
  */
-class PictureRepository extends EntityRepository
+class UserRepository extends EntityRepository
 {
 }

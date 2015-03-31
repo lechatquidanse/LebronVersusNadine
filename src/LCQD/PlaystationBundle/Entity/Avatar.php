@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Playstation package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\PlaystationBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,11 +18,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\Component\Doctrine\Model as DoctrineModel;
-use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
+use LCQD\PlaystationBundle\Model\AvatarInterface;
+use LCQD\PlaystationBundle\Model\Avatar;
 
 /**
- * Avatar
+ * Entity that extends {@inheritdoc} 
  *
+ * {@inheritdoc} 
+ * 
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="LCQD\PlaystationBundle\Entity\AvatarRepository")
  * @ORM\Table(name="lcqd_avatar")
@@ -32,7 +44,7 @@ use LCQD\PlaystationBundle\Model\Avatar as BaseAvatar;
  * 
  * @author lechatquidanse
  */
-class Avatar extends BaseAvatar
+class Avatar implements AvatarInterface
 {
     /**
      * Add properties, created and updated datetime informations
@@ -45,6 +57,8 @@ class Avatar extends BaseAvatar
     use DoctrineModel\Enabled;
 
     /**
+     * Id
+     * 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -54,6 +68,8 @@ class Avatar extends BaseAvatar
     protected $id;
 
     /**
+     * Firstname
+     * 
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=45, nullable=false)
@@ -61,6 +77,8 @@ class Avatar extends BaseAvatar
     protected $firstname;
 
     /**
+     * Lastname
+     * 
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=45, nullable=true)
@@ -68,6 +86,8 @@ class Avatar extends BaseAvatar
     protected $lastname;
 
     /**
+     * About me (avatar)
+     * 
      * @var text
      *
      * @ORM\Column(name="about_me", type="text", nullable=true)
@@ -75,6 +95,8 @@ class Avatar extends BaseAvatar
     protected $aboutMe;
 
     /**
+     * Birthday at
+     * 
      * @var Datetime
      * 
      * @Gedmo\Timestampable(on="create")
@@ -83,6 +105,8 @@ class Avatar extends BaseAvatar
     protected $birthdayAt;
 
     /**
+     * Price
+     * 
      * @var float
      *
      * @ORM\Column(name="price", type="float", nullable=true)
@@ -90,6 +114,8 @@ class Avatar extends BaseAvatar
     protected $price;
 
     /**
+     * Pictures
+     * 
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="LCQD\PlaystationBundle\Entity\Picture", mappedBy="avatar", cascade={"all"}, orphanRemoval=true)
@@ -97,6 +123,8 @@ class Avatar extends BaseAvatar
     protected $pictures;
 
     /**
+     * Users
+     * 
      * @var ArrayCollection
      * 
      * @ORM\OneToMany(targetEntity="LCQD\PlaystationBundle\Entity\User", mappedBy="avatar")
@@ -114,7 +142,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -123,6 +151,9 @@ class Avatar extends BaseAvatar
 
     /**
      * {@inheritDoc}
+     * 
+     * @param string $firstname
+     * @return Avatar
      */
     public function setFirstname($firstname)
     {
@@ -132,7 +163,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFirstname()
     {
@@ -140,7 +171,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param string $lastname
+     * @return Avatar
      */
     public function setLastname($lastname)
     {
@@ -150,7 +184,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getLastname()
     {
@@ -158,7 +192,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param string $aboutMe
+     * @return Avatar
      */
     public function setAboutMe($aboutMe)
     {
@@ -168,7 +205,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getAboutMe()
     {
@@ -176,7 +213,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param Datetime $birthdayAt
+     * @return Avatar
      */
     public function setBirthdayAt(\Datetime $birthdayAt = null)
     {
@@ -186,7 +226,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getBirthdayAt()
     {
@@ -194,7 +234,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param float $price
+     * @return Avatar
      */
     public function setPice($price)
     {
@@ -204,7 +247,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getPrice()
     {
@@ -212,7 +255,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param ArrayCollection $users
+     * @return Avatar
      */
     public function setUsers(ArrayCollection $users)
     {
@@ -223,7 +269,10 @@ class Avatar extends BaseAvatar
 
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     *
+     * @param Picture $picture The picture
+     * @return Avatar
      */
     public function addPicture(Picture $picture)
     {
@@ -234,7 +283,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     *
+     * @param Picture $picture The picture
+     * @return Avatar
      */
     public function removePicture(Picture $picture)
     {
@@ -244,7 +296,10 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     * 
+     * @param ArrayCollection $pictures
+     * @return Avatar
      */
     public function setPictures(ArrayCollection $pictures)
     {
@@ -254,7 +309,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getPictures()
     {
@@ -262,7 +317,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getUsers()
     {
@@ -270,8 +325,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * Count Users
-     * Return the number of users that use this avatar
+     * {@inheritdoc}
      *
      * @Serializer\VirtualProperty
      * 
@@ -283,8 +337,7 @@ class Avatar extends BaseAvatar
     }
 
     /**
-     * Count Pictures
-     * Return the number of pictures for this avatar
+     * {@inheritdoc}
      *
      * @Serializer\VirtualProperty
      * 

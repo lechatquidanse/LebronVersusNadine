@@ -9,19 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace LCQD\PlaystationBundle\Entity;
-
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query;
-use Doctrine\ORM\NoResultException;
+namespace LCQD\PlaystationBundle\Model;
 
 /**
- * Picture Repository
- * 
- * Picture Doctrine query repository
+ * AvatarManagerInterface
  * 
  * @author lechatquidanse
  */
-class PictureRepository extends EntityRepository
+interface PictureManagerInterface
 {
 }

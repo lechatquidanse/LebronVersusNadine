@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Playstation package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\PlaystationBundle\Manager;
 
 use LCQD\Component\Manager\BaseManager;
+use LCQD\PlaystationBundle\Model\AvatarManagerInterface;
 use LCQD\PlaystationBundle\Model\AvatarInterface;
 use LCQD\PlaystationBundle\Form\AvatarType;
 
@@ -14,7 +24,7 @@ use LCQD\PlaystationBundle\Form\AvatarType;
 class AvatarManager extends BaseManager implements AvatarManagerInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getOneRandom()
     {
@@ -22,7 +32,7 @@ class AvatarManager extends BaseManager implements AvatarManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function createForm()
     {

@@ -1,17 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Playstation package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\PlaystationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use LCQD\PlaystationBundle\Model\AvatarInterface as AvatarInterface;
-use LCQD\PlaystationBundle\Model\User as BaseUser;
+use LCQD\PlaystationBundle\Model\Avatar;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
  * 
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="LCQD\PlaystationBundle\Entity\UserRepository")
  * @ORM\Table(name="lcqd_user")
  *
  * @Hateoas\Relation(
@@ -25,14 +35,26 @@ use LCQD\PlaystationBundle\Model\User as BaseUser;
  * 
  * @author lechatquidanse
  */
-class User extends BaseUser
+class User extends BaseUser implements UserInterface
 {
+    /**
+     * Role Api User name
+     */
+    const __ROLE_API_USER__ = 'ROLE_API_USER';
+    
+    /**
+     * Default funds for User
+     */
+    const __DEFAULT_FUNDS__ = 100.00;
+
     /**
      * Add properties, created and updated datetime informations
      */
     use ORMBehaviors\Timestampable\Timestampable;
     
     /**
+     * Id
+     * 
      * @var integer
      * 
      * @ORM\Id
@@ -42,6 +64,8 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * Funds
+     *
      * @var float
      *
      * @ORM\Column(name="funds", type="float", nullable=true)
@@ -49,18 +73,30 @@ class User extends BaseUser
     protected $funds;
 
     /**
-    * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"}, inversedBy="users")
-    * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
-    */
+     * Avatar
+     *
+     * @var Avatar
+     * 
+     * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", cascade={"persist"}, inversedBy="users")
+     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", nullable=true)
+     */
     private $avatar;
 
+    /**
+     * __construct
+     * Set Default Roles for User and call parent
+     */
     public function __construct()
     {
         parent::__construct();
+        $this->setDefaultRoles();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     *
+     * @param float $funds
+     * @return User
      */
     public function setFunds($funds)
     {
@@ -70,7 +106,7 @@ class User extends BaseUser
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFunds()
     {
@@ -78,10 +114,12 @@ class User extends BaseUser
     }
 
     /**
-     * @param AvatarInterface $avatar
+     * {@inheritdoc}
+     *
+     * @param Avatar $avatar
      * @return User
      */
-    public function setAvatar(AvatarInterface $avatar)
+    public function setAvatar(Avatar $avatar)
     {
         $this->avatar = $avatar;
 
@@ -89,10 +127,34 @@ class User extends BaseUser
     }
 
     /**
-     * @return AvatarInterface
+     * {@inheritdoc}
      */
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultFunds()
+    {
+        $this->setFunds(self::__DEFAULT_FUNDS__);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultRoles()
+    {
+        return array(self::__ROLE_API_USER__);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultRoles()
+    {
+        $this->setRoles($this->getDefaultRoles());
     }
 }

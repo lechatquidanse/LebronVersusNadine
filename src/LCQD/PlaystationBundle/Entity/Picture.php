@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Playstation package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\PlaystationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +16,8 @@ use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use LCQD\Component\Doctrine\Model as DoctrineModel;
-use LCQD\PlaystationBundle\Model\Picture as BasePicture;
+use LCQD\PlaystationBundle\Model\AvatarInterface;
+use LCQD\PlaystationBundle\Model\PictureInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\ExecutionContextInterface;
@@ -21,7 +31,7 @@ use Symfony\Component\Validator\ExecutionContextInterface;
  * 
  * @author lechatquidanse
  */
-class Picture extends BasePicture
+class Picture implements PictureInterface
 {
     /**
      * Add properties, created and updated datetime informations
@@ -34,6 +44,8 @@ class Picture extends BasePicture
     use DoctrineModel\Enabled;
 
     /**
+     * Id
+     * 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -43,6 +55,8 @@ class Picture extends BasePicture
     protected $id;
 
     /**
+     * Name
+     * 
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -52,6 +66,8 @@ class Picture extends BasePicture
     private $name;
 
     /**
+     * Caption
+     * 
      * @var string
      *
      * @ORM\Column(name="caption", type="string", length=255, nullable=true)
@@ -59,7 +75,9 @@ class Picture extends BasePicture
     private $caption;
 
     /**
-     * @var array
+     * Avatar
+     * 
+     * @var AvatarInterface
      *
      * @ORM\ManyToOne(targetEntity="LCQD\PlaystationBundle\Entity\Avatar", inversedBy="pictures")
      * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
@@ -67,14 +85,16 @@ class Picture extends BasePicture
     private $avatar;
 
     /**
+     * File
+     *
+     * @var File
+     * 
      * @Assert\Image()
      */
     private $file;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -82,10 +102,9 @@ class Picture extends BasePicture
     }
 
     /**
-     * Set name
+     * {@inheritdoc}
      *
      * @param string $name
-     *
      * @return Picture
      */
     public function setName($name)
@@ -96,9 +115,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Get name
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -106,10 +123,9 @@ class Picture extends BasePicture
     }
 
     /**
-     * Set caption
+     * {@inheritdoc}
      *
      * @param string $caption
-     *
      * @return Picture
      */
     public function setCaption($caption)
@@ -120,9 +136,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Get caption
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getCaption()
     {
@@ -130,10 +144,9 @@ class Picture extends BasePicture
     }
 
     /**
-     * Set the avatar
+     * {@inheritdoc}
      *
-     * @param AvatarInterface $avatar The avatar
-     *
+     * @param Avatar $avatar The avatar
      * @return Picture
      */
     public function setAvatar(Avatar $avatar)
@@ -142,11 +155,8 @@ class Picture extends BasePicture
 
         return $this;
     }
-
     /**
-     * Get the avatar
-     *
-     * @return AvatarInterface
+     * {@inheritdoc}
      */
     public function getAvatar()
     {
@@ -154,11 +164,10 @@ class Picture extends BasePicture
     }
 
     /**
-     * Set the file
+     * {@inheritdoc}
      *
      * @param File $file The file
-     *
-     * @return Widget
+     * @return Picture
      */
     public function setFile(File $file)
     {
@@ -168,9 +177,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Get the file
-     *
-     * @return File
+     * {@inheritdoc}
      */
     public function getFile()
     {
@@ -178,7 +185,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Make the filename
+     * {@inheritdoc}
      *
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -191,7 +198,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Upload the file
+     * {@inheritdoc}
      *
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
@@ -205,7 +212,7 @@ class Picture extends BasePicture
     }
 
     /**
-     * Remove the file
+     * {@inheritdoc}
      *
      * @ORM\PostRemove()
      */
@@ -217,13 +224,9 @@ class Picture extends BasePicture
     }
 
     /**
-     * Check if the picture is valid.
-     *
-     * The picture is valid if the name is not null or the name is null and the
-     * file is not null
+     * {@inheritdoc}
      *
      * @param ExecutionContextInterface $context The validator context
-     *
      * @return boolean
      */
     public function isPictureValid(ExecutionContextInterface $context)
@@ -238,10 +241,8 @@ class Picture extends BasePicture
         }
     }
 
-
     /**
-     * Web path
-     * Return the web path
+     * {@inheritdoc}
      *
      * @Serializer\VirtualProperty
      * 
@@ -250,5 +251,43 @@ class Picture extends BasePicture
     public function webPath()
     {
         return $this->getWebPicture();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAbsolutePicture()
+    {
+        return null === $this->getName() ? null : $this->getUploadRootDir() . '/' . $this->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getWebPicture()
+    {
+        return null === $this->getName() ? null : $this->getUploadDir() . '/' . $this->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $folderName The folder name
+     * @return string
+     */
+    protected function getUploadRootDir($folderName = null)
+    {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir($folderName);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $folderName The folder name
+     * @return string
+     */
+    protected function getUploadDir($folderName = null)
+    {
+        return 'uploads/avatar/pictures' . ($folderName === null ? '' : '/' . $folderName);
     }
 }

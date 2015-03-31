@@ -1,12 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Playstation package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\PlaystationBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use LCQD\PlaystationBundle\Entity\Picture;
 
 /**
- * AvatarInterface
+ * Avatar Interface
+ * 
+ * Avatar is used to give a personnage for a user of the api
  * 
  * @author lechatquidanse
  */
@@ -23,7 +33,7 @@ interface AvatarInterface
      * Set Firstname
      * 
      * @param string $firstname
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setFirstname($firstname);
 
@@ -38,7 +48,7 @@ interface AvatarInterface
      * Set Lastname
      * 
      * @param string $lastname
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setLastname($lastname);
 
@@ -53,7 +63,7 @@ interface AvatarInterface
      * Set About me
      * 
      * @param string $aboutMe
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setAboutMe($aboutMe);
 
@@ -68,7 +78,7 @@ interface AvatarInterface
      * Set birthday at
      * 
      * @param Datetime $birthdayAt
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setBirthdayAt(\Datetime $birthdayAt = null);
 
@@ -83,7 +93,7 @@ interface AvatarInterface
      * Set Price
      * 
      * @param float $price
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setPice($price);
 
@@ -98,34 +108,31 @@ interface AvatarInterface
      * Set users
      * 
      * @param ArrayCollection $users
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setUsers(ArrayCollection $users);
 
     /**
      * Add a new picture
      *
-     * @param Picture $picture The picture
-     *
-     * @return Avatar
+     * @param PictureInterface $picture The picture
+     * @return AvatarInterface
      */
-    public function addPicture(Picture $picture);
+    public function addPicture(PictureInterface $picture);
 
     /**
      * Remove a picture
      *
-     * @param Picture $picture The picture
-     *
-     * @return Avatar
+     * @param PictureInterface $picture The picture
+     * @return AvatarInterface
      */
-    public function removePicture(Picture $picture);
+    public function removePicture(PictureInterface $picture);
 
     /**
      * Set all pictures
      * 
      * @param ArrayCollection $pictures
-     *
-     * @return Avatar
+     * @return AvatarInterface
      */
     public function setPictures(ArrayCollection $pictures);
 
