@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Bazinga\Bundle\RestExtraBundle\BazingaRestExtraBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Escape\WSSEAuthenticationBundle\EscapeWSSEAuthenticationBundle(),
 
             // APP
             new FOS\UserBundle\FOSUserBundle(),
