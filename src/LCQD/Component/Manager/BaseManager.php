@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Component package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\Component\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -8,16 +17,54 @@ use Symfony\Component\Form\FormFactoryInterface;
 
 /**
  * BaseManager
+ *
+ * Abstract Base Manager used for common action for manager handling an entity
  * 
  * @author lechatquidanse
  */
 abstract class BaseManager implements ManagerInterface
 {
+    /**
+     * om
+     *
+     * Object Manager
+     * 
+     * @var ObjectManager
+     */
     protected $om;
+
+    /**
+     * Entity Class
+     *
+     * Entity Class Name
+     * 
+     * @var string
+     */
     protected $entityClass;
+    
+    /**
+     * Repository
+     *
+     * Entity Repository
+     * 
+     * @var EntityRepository
+     */
     protected $repository;
+
+    /**
+     * Form Factory
+     * 
+     * @var FormFactoryInterface
+     */
     protected $formFactory;
 
+    /**
+     * Constructor
+     * 
+     * @param ObjectManager        $om        
+     * @param string               $entityClass
+     * @param FormFactoryInterface $formFactory
+     */
     public function __construct(ObjectManager $om, $entityClass, FormFactoryInterface $formFactory)
     {
         $this->om = $om;
@@ -27,11 +74,10 @@ abstract class BaseManager implements ManagerInterface
     }
 
     /**
-     * Get an Entity.
+     * {@inheritdoc}
      *
      * @param mixed $id
-     *
-     * @return PageInterface
+     * @return Object
      */
     public function get($id)
     {
@@ -39,7 +85,7 @@ abstract class BaseManager implements ManagerInterface
     }
 
     /**
-     * Get a list of Entities.
+     * {@inheritdoc}
      *
      * @param int $limit  the limit of the result
      * @param int $offset starting from the offset
@@ -75,7 +121,7 @@ abstract class BaseManager implements ManagerInterface
     /**
      * Persist an entity and then flush
      * 
-     * @param  object $entity 
+     * @param  Object $entity 
      * @return null
      */
     protected function persistAndFlush($entity)
@@ -87,7 +133,7 @@ abstract class BaseManager implements ManagerInterface
     /**
      * Create one instance of $this->entityClass
      * 
-     * @return object
+     * @return Object
      */
     protected function create()
     {

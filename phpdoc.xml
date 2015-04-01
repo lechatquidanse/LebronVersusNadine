@@ -19,10 +19,14 @@
         <template name="clean" />
     </transformations>
     <files>
+        <!-- LCDQ\Component -->
+        <directory>src/LCQD/Component</directory>
+        <!-- LCDQ\PlaystationBundle -->
         <directory>src/LCQD/PlaystationBundle</directory>
         <ignore>src/LCQD/*/DependencyInjection/*</ignore>
         <ignore>src/LCQD/*/Tests/*</ignore>
         <ignore>src/LCQD/PlaystationBundle/LCQDPlaystationBundle.php</ignore>
+        <!-- Symfony -->
         <ignore>bin/*</ignore>
     </files>
 </phpdoc>

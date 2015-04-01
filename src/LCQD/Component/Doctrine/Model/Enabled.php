@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Component package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\Component\Doctrine\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Enabled
+ *
+ * Trait Enabled used to add an enabled flag to Entity
  * 
  * @author lechatquidanse
  */

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Component package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\Component\Features\Context;
 
 use Behat\Behat\Context\Context;
@@ -15,8 +24,12 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Exception;
+
 /**
  * BaseContext
+ *
+ * Abstract Base context for common behaviour context
  * 
  * @author lechatquidanse
  */
@@ -36,6 +49,8 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
 
     /**
      * {@inheritdoc}
+     *
+     * @param KernelInterface $kernel
      */
     public function setKernel(KernelInterface $kernel)
     {
@@ -69,13 +84,13 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
      *
      * @return null|UserInterface
      *
-     * @throws \Exception
+     * @throws Exception
      */
     protected function getUser()
     {
         $token = $this->getSecurityContext()->getToken();
         if (null === $token) {
-            throw new \Exception('No token found in security context.');
+            throw new Exception('No token found in security context.');
         }
         return $token->getUser();
     }

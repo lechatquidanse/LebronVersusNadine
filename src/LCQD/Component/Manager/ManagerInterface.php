@@ -1,9 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Component package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\Component\Manager;
 
 /**
- * ManagerInterface
+ * Manager Interface
  * 
  * @author lechatquidanse
  */
@@ -12,10 +21,7 @@ interface ManagerInterface
     /**
      * Get an Entity given the identifier
      *
-     * @api
-     *
      * @param mixed $id
-     *
      * @return Entity
      */
     public function get($id);
@@ -25,7 +31,6 @@ interface ManagerInterface
      *
      * @param int $limit  the limit of the result
      * @param int $offset starting from the offset
-     *
      * @return array
      */
     public function all($limit = 5, $offset = 0);
