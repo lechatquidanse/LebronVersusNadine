@@ -1,29 +1,107 @@
 <?php
 
+/**
+ * This file is part of the App package.
+ *
+ * (c) lechatquidanse
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LCQD\AppBundle\Features\Context;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use LCQD\Component\Features\Context\BaseContext;
+use Behat\Gherkin\Node\TableNode;
+use LCQD\AppBundle\Features\Context\AppContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
  * UserContext
+ * 
  * Defines application features from the specific context.
  * 
  * @author lechatquidanse
+ * @todo Fix mink catch redirection
  */
-class UserContext extends BaseContext
+class UserContext extends AppContext
 {
+    /**
+     * Users
+     *
+     * Array of users informations created for feature
+     * 
+     * @var array
+     */
+    private $users = array();
 
-    private $minkContext;
-    private $minkRedirectContext;
-
-
-    /** @BeforeScenario */
-    public function gatherContexts(BeforeScenarioScope $scope)
+    /**
+     * There are following users in database
+     *
+     * Persist and flush user in $table
+     * 
+     * @Given there are following users in database:
+     * 
+     * @param  TableNode $table
+     */
+    public function thereAreFollowingUsersInDataBase(TableNode $table)
     {
-        $environment = $scope->getEnvironment();
-        //$this->minkContext = $environment->getContext('Behat\MinkExtension\Context\MinkContext');
+        foreach ($table->gethash() as $row) {
+            $this->users[$row['username']] = $row;
+
+            $user = $this->userManager->createUser();
+            $user->setUsername($row['username']);
+            $user->setEmail($row['email']);
+            $user->setPlainPassword($row['password']);
+            $user->setEnabled(true);
+
+            $avatar = $this->avatarManager->getOneRandom();
+            $user->setAvatar($avatar);
+
+            $this->userManager->updateUser($user);
+        }
     }
+
+    /**
+     * I am authentificated as
+     * 
+     * @Given I am authentificated as :username
+     * 
+     * @param  string $username
+     * @throws Exception If no user
+     */
+    public function iAmAuthentificatedAs($username)
+    {
+        if (!isset($this->users[$username]['password'])) {
+            throw new \Exception('Invalid user ' . $username);
+        }
+
+        $user = $this->userManager->findUserBy(array('username' => $this->users[$username]));
+
+        if (!$user) {
+            throw new \Exception('No user ' . $username);
+        }
+
+        $token = new UsernamePasswordToken($user->getUsername(), $user->getPassword(), "app", $user->getRoles());
+
+        if (!$token) {
+            throw new \Exception('No token for user ' . $username);
+        }
+        $securityContext = $this->getSecurityContext();
+        $securityContext->setToken($token);
+    }
+
+    /**
+     * @Given my funds are :funds
+     */
+    public function myFundsAre($funds)
+    {
+        $user = $this->userManager->findUserBy(array('username' => $this->getUser()));
+        $user->setFunds($funds);
+
+        $this->userManager->updateUser($user);
+    }
+
     /**
      * @When I fill in login form with :options informations
      */
@@ -34,14 +112,18 @@ class UserContext extends BaseContext
     }
 
     /**
-     * @When I fill in register form with :options informations
+     * @When I fill in registration form with successful informations
      */
-    public function iFillInFormWithInformations($options)
+    public function iFillInRegistrationFormWithSuccessfulInformations()
     {
-        $this->fillField('fos_user_registration_form_email', 'zum@zum.zz');
-        $this->fillField('fos_user_registration_form_username', 'zum');
-        $this->fillField('fos_user_registration_form_plainPassword_first', 'zum');
-        $this->fillField('fos_user_registration_form_plainPassword_second', 'zum');
+        $email = 'zumzumzum@hotmail.com';
+        $username = 'zum';
+        $password = 'password';
+
+        $this->fillField('fos_user_registration_form_email', $email);
+        $this->fillField('fos_user_registration_form_username', $username);
+        $this->fillField('fos_user_registration_form_plainPassword_first', $password);
+        $this->fillField('fos_user_registration_form_plainPassword_second', $password);
     }
 
     /**
@@ -61,9 +143,9 @@ class UserContext extends BaseContext
     }
 
     /**
-     * @When I submit register form
+     * @When I submit registration form
      */
-    public function iSubmitRegisterForm()
+    public function iSubmitRegistrationForm()
     {
         //$this->minkContext->forward('registration.submit');
     }

@@ -12,4 +12,12 @@
 			</ul>
 		{% endfor %}
 	</div>
+
+	{% set user = app.security.getToken().getUser() %}
+	<h2>User: {{ user.username }}</h2>
+	<div>
+		<ul>
+			<li>Funds: {{ user.funds }}</li>
+		</ul>
+	</div>
 {% endblock %}

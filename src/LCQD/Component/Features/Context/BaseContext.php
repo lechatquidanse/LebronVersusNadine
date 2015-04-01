@@ -15,9 +15,7 @@ use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
-
-use Faker\Factory as FakerFactory;
-use Faker\Generator;
+use Behat\Symfony2Extension\Context\KernelDictionary;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -35,38 +33,8 @@ use Exception;
  */
 abstract class BaseContext extends RawMinkContext implements Context, KernelAwareContext, SnippetAcceptingContext
 {
-    /**
-     * Faker.
-     *
-     * @var Generator
-     */
-    protected $faker;
-    
-    /**
-     * @var KernelInterface
-     */
-    protected $kernel;
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param KernelInterface $kernel
-     */
-    public function setKernel(KernelInterface $kernel)
-    {
-        $this->kernel = $kernel;
-    }
-    
-    /**
-     * Returns Container instance.
-     *
-     * @return ContainerInterface
-     */
-    protected function getContainer()
-    {
-        return $this->kernel->getContainer();
-    }
-    
+    use KernelDictionary;
+       
     /**
      * Get service by id.
      *
@@ -106,7 +74,11 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
     
     /**
+     * Press Button
+     *
      * Presses button with specified id|name|title|alt|value.
+     *
+     * @param string $button
      */
     protected function pressButton($button)
     {
@@ -114,7 +86,11 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
     
     /**
+     * CLick Link
+     * 
      * Clicks link with specified id|title|alt|text.
+     *
+     * @param  string $link
      */
     protected function clickLink($link)
     {
@@ -122,7 +98,12 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
 
     /**
+     * Fill Field
+     * 
      * Fills in form field with specified id|name|label|value.
+     *
+     * @param string $field
+     * @param string $value
      */
     protected function fillField($field, $value)
     {
@@ -130,7 +111,11 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
 
     /**
+     * Check Fields
+     * 
      * Checks checkbox with specified id|name|label|value.
+     *
+     * @param string $field
      */
     protected function checkField($field)
     {
@@ -138,7 +123,12 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
     
     /**
+     * Select Optin
+     * 
      * Selects option in select field with specified id|name|label|value.
+     *
+     * @param string $select
+     * @param string $option
      */
     protected function selectOption($select, $option)
     {
@@ -146,10 +136,11 @@ abstract class BaseContext extends RawMinkContext implements Context, KernelAwar
     }
     
     /**
+     * Fix Step Argument
+     * 
      * Returns fixed step argument (with \\" replaced back to ").
      *
      * @param string $argument
-     *
      * @return string
      */
     protected function fixStepArgument($argument)

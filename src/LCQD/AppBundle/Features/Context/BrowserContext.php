@@ -13,7 +13,18 @@ use LCQD\Component\Features\Context\BaseContext;
  */
 class BrowserContext extends BaseContext
 {
+    /**
+     * Mink Context
+     * @var Behat\MinkExtension\Context\MinkContext
+     */
+    
     public $minkContext;
+
+    /**
+     * routes
+     * 
+     * @var array
+     */
     public $routes = array();
 
     /** @BeforeScenario */
@@ -28,6 +39,7 @@ class BrowserContext extends BaseContext
      */
     public function iAmOnPage($pagename)
     {
+        var_dump($this->getRouteFromPagename($pagename));
         $this->minkContext->visit($this->getRouteFromPagename($pagename));
     }
     /**
@@ -76,10 +88,11 @@ class BrowserContext extends BaseContext
     private function addRoutes()
     {
         $userRoutes = array(
+            'avatars' => 'api_1_get_avatars',
             'homepage' => 'lcqd_app_homepage',
+            'login' => 'fos_user_security_login',
             'registration' => 'fos_user_registration_register',
             'registration confirmed' => 'fos_user_registration_confirmed',
-            'login' => 'fos_user_security_login'
             );
 
         foreach ($userRoutes as $pagename => $routename) {

@@ -50,7 +50,7 @@ class DoctrineFixturesContext implements Context, KernelAwareContext
     /**
      * @BeforeScenario
      */
-    public function loadFixturesBeforeScenarios()
+    public function loadFixturesBeforeScenario()
     {
         $paths = array();
         foreach ($this->kernel->getBundles() as $bundle) {

@@ -21,6 +21,8 @@ class AvatarPictureProcessor implements ProcessorInterface
     const TMP_FOLDER = __DIR__ . '/../../../../../../var/tmp/fixtures';
 
     /**
+     * Pre Process
+     * 
      * Processes an object before it is persisted to DB
      * Create picture to fill avatar pictures
      * 
@@ -48,6 +50,8 @@ class AvatarPictureProcessor implements ProcessorInterface
     }
 
     /**
+     * Post Process
+     * 
      * Processes an object before it is persisted to DB
      *
      * @param object $object instance to process
@@ -60,6 +64,8 @@ class AvatarPictureProcessor implements ProcessorInterface
     }
 
     /**
+     * Curl Picture File
+     * 
      * Curl a picture from an url and save it in tmp folder
      * 
      * @param  string $sourceSave tmp path to save picture
@@ -75,9 +81,12 @@ class AvatarPictureProcessor implements ProcessorInterface
     }
 
     /**
+     * Create One
+     * 
      * Create One picture for fixtures
      * 
      * @return Picture|null
+     * @todo process when exception is catched
      */
     public function createOne()
     {

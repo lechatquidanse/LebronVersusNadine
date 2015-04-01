@@ -5,8 +5,8 @@ Feature: User sign in application
 
   Scenario: Successful "registration" with "application account"
     Given I am on "registration" page
-    When I fill in "creating an account" form with "successful" informations
-    And I submit "creating an account" form
+    When I fill in registration form with successful informations
+    And I submit registration form
     Then I should be redirected to "my account" page
     And I should see "successful registration" information
 
@@ -32,20 +32,20 @@ Feature: User sign in application
     Then I should be redirected to "log in" page
     And I should see "error log in" information
 
-  Scenario: Successful "registration" with "facebook"
-    Given I am on "registration" page
-    When I am registering with "facebook" account
-    Then I should be redirected to "my account" page
-    And I should see "successful registration" information
+  # Scenario: Successful "registration" with "facebook"
+  #   Given I am on "registration" page
+  #   When I am registering with "facebook" account
+  #   Then I should be redirected to "my account" page
+  #   And I should see "successful registration" information
 
-  Scenario: Successful "registration" with "twitter"
-    Given I am on "registration" page
-    When I am registering with "twitter" account
-    Then I should be redirected to "my account" page
-    And I should see "successful registration" information
+  # Scenario: Successful "registration" with "twitter"
+  #   Given I am on "registration" page
+  #   When I am registering with "twitter" account
+  #   Then I should be redirected to "my account" page
+  #   And I should see "successful registration" information
     
-  Scenario: Successful "registration" with "github"
-    Given I am on "registration" page
-    When I am registering with "github" account
-    Then I should be redirected to "my account" page
-    And I should see "successful registration" information
+  # Scenario: Successful "registration" with "github"
+  #   Given I am on "registration" page
+  #   When I am registering with "github" account
+  #   Then I should be redirected to "my account" page
+  #   And I should see "successful registration" information
