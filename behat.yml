@@ -28,7 +28,6 @@ default:
                     symfony2: ~
                 javascript:
                     selenium2: ~
-            browser_name: google-chrome
         Behat\Symfony2Extension:
             kernel:
                 env: test
