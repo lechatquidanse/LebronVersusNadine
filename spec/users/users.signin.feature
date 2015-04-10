@@ -24,11 +24,11 @@ Feature: User sign in application
   #   And I should see "already exist mail" information
 
   Scenario: Successful "log in" with "application account"
-    Given I am on "log in" page
-    When I fill "log in" form with login "Mishka" and password "password"
-    And I submit "log in" form
-    Then I should be redirected to "my account" page
-    And I should see "successful log in" information
+    Given I am on "login" page
+    When I fill in login form with login "Mishka" and password "password"
+    And I submit login form
+    Then I should be on "homepage" page
+    And I should see "Hello Mishka"
 
   # Scenario: Error "log in" with "application account"
   #   Given I am on "log in" page

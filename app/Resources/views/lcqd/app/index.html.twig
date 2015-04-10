@@ -1,1 +1,8 @@
 {% extends 'lcqd/app/layout.html.twig' %}
+
+{% block fos_user_content %}
+
+	{% if is_granted('ROLE_API_USER') %}
+		Hello {{ app.user.username }}
+	{% endif %}
+{% endblock %}

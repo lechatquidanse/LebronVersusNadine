@@ -1,15 +1,15 @@
 default:
 
     suites:
-        # users:
-        #     type: symfony_bundle
-        #     bundle: LCQDAppBundle
-        #     paths:    [ %paths.base%/spec/users/ ]
-        #     contexts:
-        #         - LCQD\AppBundle\Features\Context\DoctrineFixturesContext
-        #         - LCQD\AppBundle\Features\Context\BrowserContext
-        #         - Behat\MinkExtension\Context\MinkContext
-        #         - LCQD\AppBundle\Features\Context\UserContext
+        users:
+            type: symfony_bundle
+            bundle: LCQDAppBundle
+            paths:    [ %paths.base%/spec/users/ ]
+            contexts:
+                - LCQD\AppBundle\Features\Context\DoctrineFixturesContext
+                - LCQD\AppBundle\Features\Context\BrowserContext
+                - Behat\MinkExtension\Context\MinkContext
+                - LCQD\AppBundle\Features\Context\UserContext
         avatars:
             type: symfony_bundle
             bundle: LCQDAppBundle

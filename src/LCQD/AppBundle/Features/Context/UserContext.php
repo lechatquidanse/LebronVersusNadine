@@ -116,6 +116,14 @@ class UserContext extends AppContext
     }
 
     /**
+     * @When I submit login form
+     */
+    public function iSubmitLoginForm()
+    {
+        $this->pressButton('security.login.submit');
+    }
+
+    /**
      * @When I fill in registration form with successful informations
      */
     public function iFillInRegistrationFormWithSuccessfulInformations()
@@ -128,22 +136,6 @@ class UserContext extends AppContext
         $this->fillField('fos_user_registration_form_username', $username);
         $this->fillField('fos_user_registration_form_plainPassword_first', $password);
         $this->fillField('fos_user_registration_form_plainPassword_second', $password);
-    }
-
-    /**
-     * @Then I should see :arg1 information
-     */
-    public function iShouldSeeInformation($arg1)
-    {
-        $this->assertSession()->assertPageContainsText('welcome homepage');
-    }
-
-    /**
-     * @When I submit login form
-     */
-    public function iSubmitLoginForm()
-    {
-        $this->pressButton('security.login.submit');
     }
 
     /**
