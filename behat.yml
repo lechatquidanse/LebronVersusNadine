@@ -22,7 +22,7 @@ default:
 
     extensions:
         Behat\MinkExtension:
-            base_url: http://lebronvsnadine.dev/app_test.php/
+            base_url: http://lebronvsnadine.dev/
             sessions:
                 default:
                     symfony2: ~

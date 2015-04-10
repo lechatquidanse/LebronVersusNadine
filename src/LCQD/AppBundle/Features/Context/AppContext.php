@@ -45,4 +45,22 @@ class AppContext extends BaseContext
         $this->userManager = $this->getService('fos_user.user_manager');
         $this->avatarManager = $this->getService('lcqd_playstation.avatar.manager');
     }
+
+    /**
+     * Get current app user instance.
+     *
+     * @return null|UserInterface
+     *
+     * @throws Exception
+     */
+    public function getAppUser()
+    {
+        $user = $this->userManager->findUserBy(array('username' => $this->getUser()->getUsername()));
+
+        if (!$user) {
+            throw new \Exception('No user ' . $this->getUser());
+        }
+
+        return $user;
+    }
 }

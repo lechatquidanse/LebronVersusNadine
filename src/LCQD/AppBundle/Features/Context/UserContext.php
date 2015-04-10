@@ -26,6 +26,15 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
  */
 class UserContext extends AppContext
 {
+    private $browserContext;
+    
+    /** @BeforeScenario */
+    public function gatherContexts(BeforeScenarioScope $scope)
+    {
+        $environment = $scope->getEnvironment();
+        $this->browserContext = $environment->getContext('LCQD\AppBundle\Features\Context\BrowserContext');
+    }
+
     /**
      * Users
      *
@@ -82,13 +91,9 @@ class UserContext extends AppContext
             throw new \Exception('No user ' . $username);
         }
 
-        $token = new UsernamePasswordToken($user->getUsername(), $user->getPassword(), "app", $user->getRoles());
-
-        if (!$token) {
-            throw new \Exception('No token for user ' . $username);
-        }
-        $securityContext = $this->getSecurityContext();
-        $securityContext->setToken($token);
+        $this->browserContext->iAmOnPage('login');
+        $this->iFillInLoginFormWithLoginAndPassword($username, $this->users[$username]['password']);
+        $this->iSubmitLoginForm();
     }
 
     /**
@@ -96,19 +101,18 @@ class UserContext extends AppContext
      */
     public function myFundsAre($funds)
     {
-        $user = $this->userManager->findUserBy(array('username' => $this->getUser()));
+        $user = $this->getAppUser();
         $user->setFunds($funds);
-
         $this->userManager->updateUser($user);
     }
 
     /**
-     * @When I fill in login form with :options informations
+     * @When I fill in login form with login :login and password :password
      */
-    public function iFillInLoginFormWithInformations($options)
+    public function iFillInLoginFormWithLoginAndPassword($login, $password)
     {
-        $this->fillField('username', 'lol');
-        $this->fillField('password', 'lol');
+        $this->fillField('username', $login);
+        $this->fillField('password', $password);
     }
 
     /**

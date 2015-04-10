@@ -5,17 +5,18 @@ Feature: User selects an Avatar
   I need to be able to select or purchase an avatar
 
   Background:
-        Given there are following users in database:
-            | email | username | password |
-            | mishka@lebronvsnadine.dev | Mishka | password |
+    Given there are following users in database:
+        | email | username | password |
+        | mishka@lebronvsnadine.dev | Mishka | password |
 
-  @javascript
   Scenario: User want to see his funds
   	Given I am authentificated as "Mishka"
   	And my funds are "250"
   	When I am on "avatars" page
-  	Then I should see "250"
-
+    Then I should see "250"
+    #Then  the response status code should be 200
+    #Then the url should match "/api/v1/avatars.html"
+  
   # Scenario: User has a choice of 10 avatar
   # Scenario: User look at a avatar informations
   # Scenario: User make active a purchased avatar
