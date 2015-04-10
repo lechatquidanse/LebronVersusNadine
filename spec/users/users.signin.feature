@@ -1,56 +1,65 @@
+@database @user
 Feature: User sign in application
   In order to use the application as me and save data
   As a user
   I need to be able to register and login
 
-  Background:
+  @registration_success
+  Scenario: Successful "registration" with "application account"
+    Given I am on "registration" page
+    When I fill in registration form with login "Mishka_2" and email "mishka_2@lebronvsnadine.dev " and password "password" and password_confirmation "password"
+    And I submit registration form
+    Then I should be on "registration confirmed" page
+    And I should see "registration.confirmed"
+
+  @registration_fail_email
+  Scenario: Filled Email is already used
     Given there are following users in database:
         | email | username | password |
         | mishka@lebronvsnadine.dev | Mishka | password |
+    And I am on "registration" page
+    When I fill in registration form with login "MishkaExists" and email "mishka@lebronvsnadine.dev " and password "password" and password_confirmation "password"
+    And I submit registration form
+    Then I should be on "registration" page
+    And I should see "fos_user.email.already_used"
 
-  # Scenario: Successful "registration" with "application account"
-  #   Given I am on "registration" page
-  #   When I fill in registration form with successful informations
-  #   And I submit registration form
-  #   Then I should be redirected to "my account" page
-  #   And I should see "successful registration" information
+  @registration_fail_login
+  Scenario: Filled Email is already used
+    Given there are following users in database:
+        | email | username | password |
+        | mishka@lebronvsnadine.dev | Mishka | password |
+    And I am on "registration" page
+    When I fill in registration form with login "Mishka" and email "mishka_2@lebronvsnadine.dev " and password "password" and password_confirmation "password"
+    And I submit registration form
+    Then I should be on "registration" page
+    And I should see "fos_user.username.already_used"
 
-  # Scenario: Filled Email is already used
-  #   Given I am on "registration" page
-  #   And A user has already been registered with "already@exists.fr" email
-  #   When I fill "creating an account" form with "already exist mail" information
-  #   And I submit "creating an account" form
-  #   Then I should be redirected to "registration" page
-  #   And I should see "already exist mail" information
+  @registration_fail_password_confirmation
+  Scenario: Filled Email is already used
+    Given I am on "registration" page
+    When I fill in registration form with login "Mishka" and email "mishka@lebronvsnadine.dev " and password "password" and password_confirmation "passwordWrong"
+    And I submit registration form
+    Then I should be on "registration" page
+    And I should see "fos_user.password.mismatch"
 
+  @login_success
   Scenario: Successful "log in" with "application account"
-    Given I am on "login" page
+    Given there are following users in database:
+        | email | username | password |
+        | mishka@lebronvsnadine.dev | Mishka | password |
+    And I am on "login" page
     When I fill in login form with login "Mishka" and password "password"
     And I submit login form
     Then I should be on "homepage" page
     And I should see "Hello Mishka"
 
-  # Scenario: Error "log in" with "application account"
-  #   Given I am on "log in" page
-  #   When I fill "log in" form with "error" information
-  #   And I submit "log in" form
-  #   Then I should be redirected to "log in" page
-  #   And I should see "error log in" information
-
-  # Scenario: Successful "registration" with "facebook"
-  #   Given I am on "registration" page
-  #   When I am registering with "facebook" account
-  #   Then I should be redirected to "my account" page
-  #   And I should see "successful registration" information
-
-  # Scenario: Successful "registration" with "twitter"
-  #   Given I am on "registration" page
-  #   When I am registering with "twitter" account
-  #   Then I should be redirected to "my account" page
-  #   And I should see "successful registration" information
-    
-  # Scenario: Successful "registration" with "github"
-  #   Given I am on "registration" page
-  #   When I am registering with "github" account
-  #   Then I should be redirected to "my account" page
-  #   And I should see "successful registration" information
+  @login_error
+  Scenario: Error "log in" with "application account"
+    Given there are following users in database:
+        | email | username | password |
+        | mishka@lebronvsnadine.dev | Mishka | password |
+    And I am on "login" page
+    When I fill in login form with login "Mishka" and password "passwordWrong"
+    And I submit login form
+    Then I should be on "login" page
+    And I should see "Invalid credentials."

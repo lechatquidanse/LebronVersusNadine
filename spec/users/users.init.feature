@@ -1,4 +1,4 @@
-@database @avatar
+@database @user
 Feature: Initiate user account with default values
   In order to play a game
   As a new registered User

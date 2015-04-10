@@ -17,11 +17,12 @@ use LCQD\Component\Features\Context\BaseContext;
  * AppContext
  * 
  * Defines application features from the specific context.
+ * No Sentence can be declared in this Context
  * 
  * @author lechatquidanse
  * @todo Fix mink catch redirection
  */
-class AppContext extends BaseContext
+abstract class AppContext extends BaseContext
 {
     /**
      * User Manager

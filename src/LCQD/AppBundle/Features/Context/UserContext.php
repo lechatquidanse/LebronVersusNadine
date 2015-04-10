@@ -26,7 +26,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
  */
 class UserContext extends AppContext
 {
-    private $browserContext;
+    protected $browserContext;
     
     /** @BeforeScenario */
     public function gatherContexts(BeforeScenarioScope $scope)
@@ -124,18 +124,14 @@ class UserContext extends AppContext
     }
 
     /**
-     * @When I fill in registration form with successful informations
+     * @When I fill in registration form with login :arg1 and email :email and password :password and password_confirmation :passwordConfirmation
      */
-    public function iFillInRegistrationFormWithSuccessfulInformations()
+    public function iFillInRegistrationFormWithLoginAndEmailAndPasswordAndPasswordConfirmation($login, $email, $password, $passwordConfirmation)
     {
-        $email = 'zumzumzum@hotmail.com';
-        $username = 'zum';
-        $password = 'password';
-
+        $this->fillField('fos_user_registration_form_username', $login);
         $this->fillField('fos_user_registration_form_email', $email);
-        $this->fillField('fos_user_registration_form_username', $username);
         $this->fillField('fos_user_registration_form_plainPassword_first', $password);
-        $this->fillField('fos_user_registration_form_plainPassword_second', $password);
+        $this->fillField('fos_user_registration_form_plainPassword_second', $passwordConfirmation);
     }
 
     /**
@@ -143,7 +139,7 @@ class UserContext extends AppContext
      */
     public function iSubmitRegistrationForm()
     {
-        //$this->minkContext->forward('registration.submit');
+        $this->pressButton('registration.submit');
     }
 
     public static function getAcceptedSnippetType()

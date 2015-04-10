@@ -39,7 +39,7 @@ class BrowserContext extends BaseContext
      */
     public function iAmOnPage($pagename)
     {
-        $this->minkContext->visit($this->getRouteFromPagename($pagename, array('_format' => 'html')));
+        $this->minkContext->visit($this->getRouteFromPagename($pagename));
     }
     
     /**
