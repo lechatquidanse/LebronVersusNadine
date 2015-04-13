@@ -182,7 +182,7 @@ class User extends BaseUser implements UserInterface
      * @param  AvatarInterface $avatar
      * @throws InvalidArgumentException If avatar is not enabled
      * @throws Exception If avatar is already used by User, too expensive, or other
-     * @return boolean
+     * @return User 
      */
     public function buyAvatar(AvatarInterface $avatar)
     {
@@ -202,6 +202,8 @@ class User extends BaseUser implements UserInterface
             throw new Exception(sprintf("Buy Avatar, avatar %d is too expensive for User", $avatar->getId()), 1);
         }
 
-        return true;
+        $newFunds = $this->getFunds() - $avatar->getPrice();
+        
+        return $this->setFunds($newFunds);
     }
 }

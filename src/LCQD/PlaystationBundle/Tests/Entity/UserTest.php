@@ -90,6 +90,9 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $avatar = new Avatar();
         $avatar->setPrice(50.00);
 
-        $this->assertEquals(true, $user->buyAvatar($avatar));
+        $user->buyAvatar($avatar);
+
+        $this->assertEquals(150.00, $user->getFunds());
+        $this->assertEquals($avatar, $user->getAvatar());
     }
 }
