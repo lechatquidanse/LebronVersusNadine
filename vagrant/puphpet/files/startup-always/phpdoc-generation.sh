@@ -1,4 +1,4 @@
-#regenerate phpdoc for project in /var/www
-cd /var/www
+# #regenerate phpdoc for project in /var/www
+# cd /var/www
 
-php bin/phpdoc
+# php bin/phpdoc
